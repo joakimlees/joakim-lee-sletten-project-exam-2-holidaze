@@ -5,7 +5,9 @@ export function MainNav() {
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link className="" to="/">
+            Home
+          </Link>
         </li>
         <li>
           <Link to="/venues">Venues</Link>
