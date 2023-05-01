@@ -1,34 +1,21 @@
 import "./App.css";
+import React from "react";
+import * as page from "./components/pages/index";
 import { Routes, Route } from "react-router-dom";
-import { Layout } from "./components/Layout";
-import * as Page from "./components/pages/index";
+import { Footer } from "./components/Footer";
+import { MainNav } from "./components/MainNav";
 
 function App() {
   return (
     <div>
+      <MainNav />
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Page.Home />} />
-          <Route path="venues" element={<Page.Venues />} />
-        </Route>
+        <Route index element={<page.Home />} />
+        <Route path="venues" element={<page.Venues />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
 
 export default App;
-
-/*
-function App() {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="venues" element={<Venues />} />
-        </Route>
-      </Routes>
-    </div>
-  );
-}
-*/
