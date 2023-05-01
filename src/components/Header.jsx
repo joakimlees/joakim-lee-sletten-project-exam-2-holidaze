@@ -2,9 +2,9 @@ import { MainNav } from "./MainNav";
 
 export function Header() {
   return (
-    <Header>
+    <header>
       <h1>header component</h1>
       <MainNav />
-    </Header>
+    </header>
   );
 }
