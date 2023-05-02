@@ -37,7 +37,7 @@ export function MainNav() {
           <li>
             <Link>Login</Link>
           </li>
-          <li>
+          <li className="bg-secondary px-10 py-1 rounded-lg">
             <Link>Register</Link>
           </li>
         </div>

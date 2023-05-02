@@ -33,6 +33,10 @@ module.exports = {
       //89px
       "5xl": ["5.5rem", "8.2rem"],
     },
+    borderRadius: {
+      //10px
+      "lg": "0.65rem",
+    },
     extend: {
       colors: {
         primary: "#02635D",
