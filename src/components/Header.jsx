@@ -24,7 +24,7 @@ export function Header() {
 
   return (
     <header className="relative bg-primary py-3 px-2 flex">
-      <div className="me-3 sm:hidden">
+      <div className="me-3">
         <img src={navIcon} alt="menu icon mobile/tablet" onClick={toggleMenu} />
       </div>
       <div className="w-28">
