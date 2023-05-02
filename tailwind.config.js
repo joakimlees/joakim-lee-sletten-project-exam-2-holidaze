@@ -15,6 +15,24 @@ module.exports = {
       buttons: ["Prompt"],
       paragraph: ["'Open Sans'"],
     },
+    fontSize: {
+      //12px
+      xs: ["0.75rem", "1.1rem"],
+      //16px
+      sm: ["1rem", "1.5rem"],
+      //21px
+      base: ["1.3rem", "1.9rem"],
+      //28px
+      xl: ["1.75rem", "2.6rem"],
+      //37px
+      "2xl": ["2.3rem", "3.4rem"],
+      //50px
+      "3xl": ["3.1rem", "4.6rem"],
+      //67px
+      "4xl": ["4.1rem", "6.2rem"],
+      //89px
+      "5xl": ["5.5rem", "8.2rem"],
+    },
     extend: {
       colors: {
         primary: "#02635D",

@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export function MainNav() {
   return (
-    <nav className="bg-primary absolute">
-      <ul className="font-buttons font-normal text-white sm:flex">
+    <nav className="z-40 bg-primary absolute top-14 left-0 px-3">
+      <ul className="font-buttons font-normal text-base text-white sm:flex">
         <li>
           <Link className="" to="/">
             Home

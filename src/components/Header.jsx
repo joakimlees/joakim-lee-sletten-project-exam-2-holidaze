@@ -12,11 +12,11 @@ export function Header() {
 
   function toggleMenu() {
     if (!isMenuClicked) {
-      setNavMenu("hidden sm:flex sm:grow");
+      setNavMenu("hidden");
       setIsMenuClicked(true);
       setNavIcon(menu);
     } else if (isMenuClicked) {
-      setNavMenu("block sm:flex");
+      setNavMenu("block");
       setIsMenuClicked(false);
       setNavIcon(close);
     }
@@ -24,7 +24,7 @@ export function Header() {
 
   return (
     <header className="relative bg-primary py-3 px-2 flex">
-      <div className="sm:hidden">
+      <div className="me-3 sm:hidden">
         <img src={navIcon} alt="menu icon mobile/tablet" onClick={toggleMenu} />
       </div>
       <div className="w-28">
