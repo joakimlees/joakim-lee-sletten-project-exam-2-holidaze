@@ -16,8 +16,8 @@ export function BannerNav() {
           <li className="me-16">
             <Link>Login</Link>
           </li>
-          <li className="bg-secondary px-10 py-1 rounded-lg">
-            <Link>Register</Link>
+          <li>
+            <Link className="bg-secondary px-10 py-1 rounded-lg">Register</Link>
           </li>
         </div>
       </ul>
