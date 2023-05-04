@@ -6,7 +6,7 @@ import { Layout } from "./components/Layout";
 
 function App() {
   return (
-    <div>
+    <div className="h-full">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<page.Home />} />

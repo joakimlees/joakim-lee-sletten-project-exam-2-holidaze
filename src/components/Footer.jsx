@@ -1,3 +1,3 @@
 export function Footer() {
-  return <footer>Footer component ss</footer>;
+  return <footer className="flex">Footer component ss</footer>;
 }

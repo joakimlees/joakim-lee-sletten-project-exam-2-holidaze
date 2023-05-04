@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 export function BannerNav() {
   return (
     <nav>
-      <ul className="flex justify-around font-buttons font-normal text-base text-white items-center">
-        <div className="flex w-full">
+      <ul className="flex justify-around font-buttons font-normal text-base text-white">
+        <div className="flex w-full items-center">
           <li className="ms-10 me-16">
             <Link to="/">Home</Link>
           </li>
