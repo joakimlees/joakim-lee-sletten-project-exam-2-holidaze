@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logoLight from "../build/logo-light.svg";
 import menu from "../build/icons/menu.svg";
 import close from "../build/icons/close.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Header() {
   const [navMenu, setNavMenu] = useState("hidden sm:flex");
@@ -13,15 +13,21 @@ export function Header() {
 
   function toggleMenu() {
     if (!isMenuClicked) {
-      setNavMenu("hidden");
       setIsMenuClicked(true);
+    } else if (isMenuClicked) {
+      setIsMenuClicked(false);
+    }
+  }
+
+  useEffect(() => {
+    if (!isMenuClicked) {
+      setNavMenu("hidden");
       setNavIcon(menu);
     } else if (isMenuClicked) {
       setNavMenu("block z-40 bg-primary absolute top-14 left-0 px-3 w-80 py-10 sm:top-20");
-      setIsMenuClicked(false);
       setNavIcon(close);
     }
-  }
+  }, [isMenuClicked]);
 
   return (
     <header className="relative bg-primary py-3 px-2 flex sm:py-6">
