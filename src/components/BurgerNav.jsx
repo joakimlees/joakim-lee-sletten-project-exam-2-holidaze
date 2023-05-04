@@ -4,7 +4,7 @@ export function BurgerNav() {
   return (
     <nav>
       <ul className="font-buttons font-normal text-base text-white sm:flex sm:flex-col">
-        <div className="mb-10 sm:hidden">
+        <div className="mb-10 border-t-2 pt-4 sm:hidden">
           <li className="my-2">
             <Link to="/">Home</Link>
           </li>
@@ -13,7 +13,7 @@ export function BurgerNav() {
           </li>
         </div>
 
-        <div className="mb-10">
+        <div className="mb-10 sm:border-t-2 sm:pt-4">
           <li className="my-2">
             <Link to="/about">About</Link>
           </li>
@@ -22,7 +22,7 @@ export function BurgerNav() {
           </li>
         </div>
 
-        <div className="mb-10">
+        <div className="mb-10 border-b-2 pb-4">
           <li className="my-2">
             <Link to="/profile">Profile</Link>
           </li>
@@ -34,7 +34,7 @@ export function BurgerNav() {
           </li>
         </div>
 
-        <div className="text-center sm:hidden">
+        <div className="text-center md:hidden">
           <li className="my-2">
             <Link to="/login">Login</Link>
           </li>

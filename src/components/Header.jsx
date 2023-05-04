@@ -24,16 +24,16 @@ export function Header() {
   }
 
   return (
-    <header className="relative bg-primary py-3 px-2 flex sm:py-5">
-      <div className="me-3 w-16 sm:w-16">
+    <header className="relative bg-primary py-3 px-2 flex sm:py-6">
+      <div className="me-3 w-12 sm:w-16">
         <img src={navIcon} alt="menu icon mobile/tablet" onClick={toggleMenu} className="w-full" />
       </div>
-      <div className="w-28 sm:w-36">
+      <div className="w-32 sm:w-40">
         <Link to="/">
           <img src={logoLight} alt="holidaze logo" />
         </Link>
       </div>
-      <div className="w-full">
+      <div className="hidden sm:block sm:w-full">
         <BannerNav />
       </div>
       <div className={navMenu}>

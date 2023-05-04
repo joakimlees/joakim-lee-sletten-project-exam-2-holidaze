@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 export function BannerNav() {
   return (
     <nav>
-      <ul className="flex justify-around font-buttons font-normal text-base text-white">
-        <div className="flex">
-          <li className="me-16">
+      <ul className="flex justify-around font-buttons font-normal text-base text-white items-center">
+        <div className="flex w-full">
+          <li className="ms-10 me-16">
             <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/venues">Venues</Link>
           </li>
         </div>
-        <div className="flex">
+        <div className="hidden md:flex items-center">
           <li className="me-16">
             <Link>Login</Link>
           </li>
