@@ -16,7 +16,7 @@ export function Home() {
     getData();
   }, []);
 
-  console.log(data);
+  console.log("hello " + data);
 
   return (
     <main className="grow">
