@@ -14,10 +14,12 @@ export function BannerNav() {
         </div>
         <div className="hidden md:flex items-center">
           <li className="me-16">
-            <Link>Login</Link>
+            <Link to="/profile/login">Login</Link>
           </li>
           <li>
-            <Link className="bg-secondary px-10 py-1 rounded-lg">Register</Link>
+            <Link to="/profile/register" className="bg-secondary px-10 py-1 rounded-lg">
+              Register
+            </Link>
           </li>
         </div>
       </ul>
