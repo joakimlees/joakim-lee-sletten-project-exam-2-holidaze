@@ -14,7 +14,7 @@ export function Register() {
           <FormField labelContent="Email" labelFor="email" inputName="email" inputType="email" inputRequired={true} />
           <FormField labelContent="Avatar" labelFor="avatar" inputName="avatar" inputType="url" inputRequired={false} />
           <FormField labelContent="Password" labelFor="password" inputName="password" inputType="text" inputRequired={true} />
-          <div className="flex justify-between">
+          <div className="flex justify-between mb-8">
             <FormField labelContent="Customer" labelFor="roleCustomer" inputName="role" inputType="radio" inputRequired={false} />
             <FormField labelContent="Manager" labelFor="roleManager" inputName="role" inputType="radio" inputRequired={false} />
           </div>
