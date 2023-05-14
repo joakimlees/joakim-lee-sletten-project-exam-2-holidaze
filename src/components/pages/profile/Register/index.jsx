@@ -8,8 +8,8 @@ export function Register() {
   return (
     <main className="grow">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-5">
-        <h1 className="text-center">Register component 3</h1>
-        <form className="max-w-xs mx-auto" action="#">
+        <h1 className="text-center mt-20 font-headings text-2xl text-dark">Register</h1>
+        <form className="bg-light py-16 px-10 rounded-lg max-w-xs mx-auto mt-10 mb-20" action="#">
           <FormField labelContent="Username" labelFor="username" inputName="username" inputType="text" inputRequired={true} />
           <FormField labelContent="Email" labelFor="email" inputName="email" inputType="email" inputRequired={true} />
           <FormField labelContent="Avatar" labelFor="avatar" inputName="avatar" inputType="url" inputRequired={false} />
