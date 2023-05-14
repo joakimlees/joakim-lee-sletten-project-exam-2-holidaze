@@ -1,6 +1,6 @@
 export function FormField(props) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <label className="" for={props.labelFor}>
         {props.labelContent}
       </label>
