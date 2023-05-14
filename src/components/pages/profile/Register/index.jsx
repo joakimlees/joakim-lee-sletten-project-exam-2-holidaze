@@ -8,7 +8,8 @@ export function Register() {
     <main className="grow">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-5">
         <h1 className="text-center">Register component 3</h1>
-        <form className="flex flex-col" action="#">
+        <form className="max-w-xs mx-auto" action="#">
+          <FormField labelContent="This label" labelFor="name" inputName="name" inputType="text" inputRequired={true} />
           <FormField labelContent="This label" labelFor="name" inputName="name" inputType="text" inputRequired={true} />
         </form>
       </div>
