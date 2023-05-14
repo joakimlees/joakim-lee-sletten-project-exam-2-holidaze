@@ -1,10 +1,10 @@
-export function FormField({ inputName, inputTitle, register, labelFor, labelContent, inputPattern, inputRequired, inputType, inputPlaceholder }) {
+export function FormField({ inputName, value, inputTitle, register, labelFor, labelContent, inputPattern, inputRequired, inputType, inputPlaceholder }) {
   return (
     <div className="flex flex-col my-2">
       <label className="font-headings text-dark text-sm" htmlFor={labelFor}>
         {labelContent}
       </label>
-      <input {...register(inputName)} name={inputName} type={inputType} required={inputRequired} pattern={inputPattern} title={inputTitle} placeholder={inputPlaceholder} className="text-black border font-paragraph text-sm rounded-lg border-dark text-sm px-2" />
+      <input {...register(inputName)} name={inputName} value={value} type={inputType} required={inputRequired} pattern={inputPattern} title={inputTitle} placeholder={inputPlaceholder} className="text-black border font-paragraph text-sm rounded-lg border-dark text-sm px-2" />
     </div>
   );
 }

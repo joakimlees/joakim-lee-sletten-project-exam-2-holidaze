@@ -22,8 +22,8 @@ export function Register() {
           <FormField register={register} labelContent="Avatar" labelFor="avatar" inputName="avatar" inputType="url" inputPlaceholder="imageUrl.no" inputRequired={false} />
           <FormField register={register} labelContent="Password" labelFor="password" inputName="password" inputType="password" inputPlaceholder="Choose a password..." inputRequired={true} />
           <div className="flex justify-between mb-8">
-            <FormField register={register} labelContent="Customer" labelFor="roleCustomer" inputName="role" inputType="radio" inputRequired={false} />
-            <FormField register={register} labelContent="Manager" labelFor="roleManager" inputName="role" inputType="radio" inputRequired={false} />
+            <FormField register={register} labelContent="Customer" labelFor="roleCustomer" inputName="role" value="Customer" inputType="radio" inputRequired={false} />
+            <FormField register={register} labelContent="Manager" labelFor="roleManager" inputName="role" value="Manager" inputType="radio" inputRequired={false} />
           </div>
           <ButtonPrimary type="submit" innerContent="Register now" />
         </form>
