@@ -1,12 +1,14 @@
 import { FormField } from "../../../form/FormField";
 import { ButtonPrimary } from "../../../ui/actions/buttons/ButtonPrimary";
 import { useForm } from "react-hook-form";
-/*
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-*/
+import { userSchema } from "../../../form/schema/userSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 export function Register() {
-  const { handleSubmit, register } = useForm();
+  const { handleSubmit, register } = useForm({
+    resolver: yupResolver(userSchema),
+  });
 
   const onSubmit = data => {
     console.log(data);
@@ -26,9 +28,9 @@ export function Register() {
           <FormField register={register} labelText="Password" htmlFor="password" name="password" type="password" placeholder="Choose a password..." required={true} />
 
           <div className="flex justify-between mb-8">
-            <FormField register={register} labelText="Customer" htmlFor="roleCustomer" name="role" value="Customer" type="radio" required={false} />
+            <FormField register={register} labelText="Customer" htmlFor="roleCustomer" name="role" value="Customer" type="radio" required={true} />
 
-            <FormField register={register} labelText="Manager" htmlFor="roleManager" name="role" value="Manager" type="radio" required={false} />
+            <FormField register={register} labelText="Manager" htmlFor="roleManager" name="role" value="Manager" type="radio" required={true} />
           </div>
 
           <ButtonPrimary type="submit" innerContent="Register now" />
