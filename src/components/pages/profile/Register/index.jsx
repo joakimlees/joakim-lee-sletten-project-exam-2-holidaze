@@ -1,7 +1,7 @@
 import { FormField } from "../../../form/FormField";
 import { ButtonPrimary } from "../../../ui/actions/buttons/ButtonPrimary";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
+//import * as yup from "yup";
 import { userSchema } from "../../../form/schema/userSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -10,9 +10,9 @@ export function Register() {
     resolver: yupResolver(userSchema),
   });
 
-  const onSubmit = data => {
+  function onSubmit(data) {
     console.log(data);
-  };
+  }
 
   return (
     <main className="grow">
@@ -23,7 +23,7 @@ export function Register() {
 
           <FormField register={register} labelText="Email" htmlFor="email" name="email" type="email" placeholder="example@stud.noroff.no" required={true} />
 
-          <FormField register={register} labelText="Avatar" htmlFor="avatar" name="avatar" type="url" placeholder="imageUrl.no" required={false} />
+          {/*<FormField register={register} labelText="Avatar" htmlFor="avatar" name="avatar" type="text" placeholder="imageUrl.no" required={false} /> */}
 
           <FormField register={register} labelText="Password" htmlFor="password" name="password" type="password" placeholder="Choose a password..." required={true} />
 
