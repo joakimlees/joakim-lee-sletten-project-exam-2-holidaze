@@ -1,11 +1,13 @@
 import { FormField } from "../../../form/FormField";
 import { ButtonPrimary } from "../../../ui/actions/buttons/ButtonPrimary";
 import { useForm } from "react-hook-form";
-//import * as yup from "yup";
+import { useState } from "react";
 import { userSchema } from "../../../form/schema/userSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export function Register() {
+  const [error, setError] = useState(null);
+
   const {
     handleSubmit,
     register,
@@ -14,9 +16,31 @@ export function Register() {
     resolver: yupResolver(userSchema),
   });
 
+  async function onSubmit(data) {
+    try {
+      const response = await fetch("API_ENDPOINT_URL", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Registration failed");
+      }
+
+      // Registration successful
+      console.log("User registered successfully");
+    } catch (error) {
+      setError(error.message);
+    }
+  }
+
+  /*
   function onSubmit(data) {
     console.log(data);
-  }
+  } */
 
   return (
     <main className="grow">
