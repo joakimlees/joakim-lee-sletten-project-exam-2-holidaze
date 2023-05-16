@@ -3,7 +3,9 @@ import { ButtonPrimary } from "../../../ui/actions/buttons/ButtonPrimary";
 import { useForm } from "react-hook-form";
 import { userSchema } from "../../../form/schema/userSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { API_HOLIDAZE_URL } from "../../../../api/constants";
+import { API_HOLIDAZE_URL, AUTH_REGISTER } from "../../../../api/constants";
+
+const url = API_HOLIDAZE_URL + AUTH_REGISTER;
 
 export function Register() {
   const {
@@ -15,10 +17,8 @@ export function Register() {
   });
 
   const onSubmit = async data => {
-    const registerUrl = API_HOLIDAZE_URL + "/auth/register";
-
     try {
-      const response = await fetch(registerUrl, {
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
