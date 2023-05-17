@@ -3,13 +3,11 @@ import { ButtonPrimary } from "../../../ui/actions/buttons/ButtonPrimary";
 import { useForm } from "react-hook-form";
 import { userSchema } from "../../../form/schema/userSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useRef } from "react";
-//import { API_HOLIDAZE_URL, AUTH_REGISTER } from "../../../../api/constants";
-
-//const url = API_HOLIDAZE_URL + AUTH_REGISTER;
+import { useAuthFetch } from "../../../../api/authFetch";
+import { API_HOLIDAZE_URL } from "../../../../api/constants";
 
 export function Register() {
-  const formRef = useRef();
+  const url = API_HOLIDAZE_URL;
 
   const {
     handleSubmit,
@@ -19,13 +17,8 @@ export function Register() {
     resolver: yupResolver(userSchema),
   });
 
-  function onSubmit(data, event) {
-    const form = event.target;
-    const url = new URL(form.action);
-    const actionPath = url.pathname;
-    const method = form.method;
-
-    console.log(actionPath + method);
+  function onSubmit(data, url, event) {
+    useAuthFetch(data, url, event);
   }
 
   /*
