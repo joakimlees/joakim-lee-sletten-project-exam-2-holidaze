@@ -3,10 +3,13 @@ import { ButtonPrimary } from "../../../ui/actions/buttons/ButtonPrimary";
 import { useForm } from "react-hook-form";
 import { userSchema } from "../../../form/schema/userSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useAuthFetch } from "../../../../api/authFetch";
+//import { useRegister } from "../../../../api/useRegister";
 import { API_HOLIDAZE_URL } from "../../../../api/constants";
+import { useState } from "react";
 
 export function Register() {
+  const [profile, setProfile] = useState();
+
   const {
     handleSubmit,
     register,
@@ -15,14 +18,12 @@ export function Register() {
     resolver: yupResolver(userSchema),
   });
 
-  const onSubmit = async (data, event) => {
+  async function onSubmit(data, event) {
     const form = event.target;
     const action = new URL(form.action);
     const path = action.pathname;
     const method = form.method;
-
     const url = API_HOLIDAZE_URL + path;
-
     const body = JSON.stringify(data);
 
     try {
@@ -34,18 +35,20 @@ export function Register() {
         body,
       });
 
-      if (response.ok) {
-        // Request succeeded
-        console.log("User registered successfully");
-      } else {
-        // Request failed
-        console.error("Failed to register user");
+      if (!response.ok) {
+        // Handle HTTP errors
+        const result = await response.json();
+        throw new Error("Request failed with status " + result.errors[0].message);
       }
+
+      const result = await response.json();
+
+      setProfile(result);
+      console.log(profile);
     } catch (error) {
-      // Request error
-      console.error("Error registering user:", error);
+      console.log(error);
     }
-  };
+  }
 
   return (
     <main className="grow">
