@@ -9,6 +9,8 @@ import { useState } from "react";
 
 export function Register() {
   const [profile, setProfile] = useState();
+  const [error, setError] = useState(false);
+  const [didUserRegister, setDidUserRegister] = useState(false);
 
   const {
     handleSubmit,
@@ -44,8 +46,11 @@ export function Register() {
       const result = await response.json();
 
       setProfile(result);
+      setDidUserRegister(true);
       console.log(profile);
     } catch (error) {
+      setError(true);
+      setDidUserRegister(false);
       console.log(error);
     }
   }
@@ -54,6 +59,8 @@ export function Register() {
     <main className="grow">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-5">
         <h1 className="text-center mt-20 font-headings text-2xl text-dark">Register</h1>
+        {didUserRegister ? <div className={didUserRegister ? "block text-primary" : "hide"}>My successMessage</div> : <div></div>}
+        {error ? <div className={error ? "block text-primary" : "hide"}>My error</div> : <div></div>}
         <form className="bg-light py-16 px-10 rounded-lg max-w-xs mx-auto mt-10 mb-20" method={"post"} action={"/auth/register"} onSubmit={handleSubmit(onSubmit)}>
           <FormField register={register} labelText="Username" htmlFor="name" name="name" type="text" placeholder="dinDjarin123" required={true} errorText={errors.name?.message} />
 
