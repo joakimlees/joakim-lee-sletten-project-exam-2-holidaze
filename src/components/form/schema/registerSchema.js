@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const userSchema = yup
+export const registerSchema = yup
   .object({
     name: yup.string().min(3, "Your username should be at least 3 characters.").max(12, "Your username cannot be longer than 12 characters.").required("Please enter a username"),
     email: yup.string().email("You must enter a valid email address").required("Please enter your email address"),

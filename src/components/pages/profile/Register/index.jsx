@@ -1,7 +1,7 @@
 import { FormField } from "../../../form/FormField";
 import { ButtonPrimary } from "../../../ui/actions/buttons/ButtonPrimary";
 import { useForm } from "react-hook-form";
-import { userSchema } from "../../../form/schema/userSchema";
+import { registerSchema } from "../../../form/schema/registerSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { API_HOLIDAZE_URL } from "../../../../api/constants";
 import { useState } from "react";
@@ -17,7 +17,7 @@ export function Register() {
     register,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(userSchema),
+    resolver: yupResolver(registerSchema),
   });
 
   async function onSubmit(data, event) {
@@ -39,6 +39,8 @@ export function Register() {
 
       if (!response.ok) {
         const result = await response.json();
+        setError(true);
+        setDidUserRegister(false);
         throw new Error(result.errors[0].message);
       }
 
