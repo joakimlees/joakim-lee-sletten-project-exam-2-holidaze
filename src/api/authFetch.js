@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 
 export async function useAuthFetch(profileData, apiURL, event) {
   const { error, setError } = useState(false);
@@ -31,3 +31,5 @@ export async function useAuthFetch(profileData, apiURL, event) {
     console.log("api request done");
   }
 }
+
+*/

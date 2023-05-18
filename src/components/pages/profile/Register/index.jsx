@@ -7,8 +7,6 @@ import { useAuthFetch } from "../../../../api/authFetch";
 import { API_HOLIDAZE_URL } from "../../../../api/constants";
 
 export function Register() {
-  const url = API_HOLIDAZE_URL;
-
   const {
     handleSubmit,
     register,
@@ -17,19 +15,23 @@ export function Register() {
     resolver: yupResolver(userSchema),
   });
 
-  function onSubmit(data, url, event) {
-    useAuthFetch(data, url, event);
-  }
+  const onSubmit = async (data, event) => {
+    const form = event.target;
+    const action = new URL(form.action);
+    const path = action.pathname;
+    const method = form.method;
 
-  /*
-  const onSubmit = async data => {
+    const url = API_HOLIDAZE_URL + path;
+
+    const body = JSON.stringify(data);
+
     try {
       const response = await fetch(url, {
-        method: "POST",
+        method,
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body,
       });
 
       if (response.ok) {
@@ -44,7 +46,6 @@ export function Register() {
       console.error("Error registering user:", error);
     }
   };
-  */
 
   return (
     <main className="grow">

@@ -4,4 +4,4 @@ export const API_HOLIDAZE = "/holidaze";
 export const API_HOLIDAZE_URL = `${API_HOST_URL}${API_BASE}${API_HOLIDAZE}`;
 
 export const VENUES = "/venues";
-export const AUTH_REGISTER = "/auth/register";
+//export const AUTH_REGISTER = "/auth/register";
