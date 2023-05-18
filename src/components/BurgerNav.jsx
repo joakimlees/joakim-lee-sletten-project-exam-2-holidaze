@@ -36,7 +36,7 @@ export function BurgerNav() {
 
         <div className="text-center md:hidden">
           <li className="my-2">
-            <Link to="/login">Login</Link>
+            <Link to="/profile/login">Login</Link>
           </li>
           <li className="bg-secondary px-10 py-1 rounded-lg my-2">
             <Link to="/profile/register">Register</Link>
