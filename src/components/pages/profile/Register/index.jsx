@@ -11,6 +11,7 @@ export function Register() {
   const [profile, setProfile] = useState();
   const [error, setError] = useState(false);
   const [didUserRegister, setDidUserRegister] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     handleSubmit,
@@ -38,20 +39,20 @@ export function Register() {
       });
 
       if (!response.ok) {
-        // Handle HTTP errors
         const result = await response.json();
-        throw new Error("Request failed with status " + result.errors[0].message);
+        throw new Error(result.errors[0].message);
       }
 
       const result = await response.json();
 
       setProfile(result);
+      setError(false);
       setDidUserRegister(true);
       console.log(profile);
     } catch (error) {
       setError(true);
       setDidUserRegister(false);
-      console.log(error);
+      setErrorMessage("Unable to register profile. " + error.name + " " + error.message);
     }
   }
 
@@ -59,9 +60,8 @@ export function Register() {
     <main className="grow">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-5">
         <h1 className="text-center mt-20 font-headings text-2xl text-dark">Register</h1>
-        {didUserRegister ? <div className={didUserRegister ? "block text-primary" : "hide"}>My successMessage</div> : <div></div>}
-        {error ? <div className={error ? "block text-primary" : "hide"}>My error</div> : <div></div>}
         <form className="bg-light py-16 px-10 rounded-lg max-w-xs mx-auto mt-10 mb-20" method={"post"} action={"/auth/register"} onSubmit={handleSubmit(onSubmit)}>
+          {didUserRegister ? <div className="block text-center text-primary">Your profile is now registered</div> : <div></div>}
           <FormField register={register} labelText="Username" htmlFor="name" name="name" type="text" placeholder="dinDjarin123" required={true} errorText={errors.name?.message} />
 
           <FormField register={register} labelText="Email" htmlFor="email" name="email" type="email" placeholder="example@stud.noroff.no" required={true} errorText={errors.email?.message} />
@@ -75,7 +75,7 @@ export function Register() {
 
             <FormField register={register} errorText={errors.venueManager?.message} labelText="Manager" htmlFor="roleManager" name="venueManager" value={true} type="radio" required={true} />
           </div>
-
+          {error ? <div className="block text-center text-secondary">{errorMessage}</div> : <div></div>}
           <ButtonPrimary type="submit" innerContent="Register now" />
         </form>
       </div>
