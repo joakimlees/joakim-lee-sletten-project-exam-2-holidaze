@@ -1,3 +1,7 @@
 export function VenueCard({ venue: { name } }) {
-  return <li>{name}</li>;
+  return (
+    <div>
+      <li>{name}</li>
+    </div>
+  );
 }

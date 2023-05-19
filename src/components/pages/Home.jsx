@@ -39,7 +39,7 @@ export function Home() {
     <main className="grow">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-5">
         <h1>Home page</h1>
-        <ul>
+        <ul className="border border-dark border-2">
           {data.map(venue => (
             <VenueCard key={venue.id} venue={venue} />
           ))}
