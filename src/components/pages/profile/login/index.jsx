@@ -12,8 +12,8 @@ export function Login() {
   const [error, setError] = useState(false);
   const [didUserLogin, setDidUserLogin] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [token, setToken] = useLocalStorage("token", "");
-  const [storedProfile, setStoredProfile] = useLocalStorage("profile", "");
+  const [token, setToken] = useLocalStorage("token", null);
+  const [storedProfile, setStoredProfile] = useLocalStorage("profile", null);
 
   const {
     handleSubmit,
@@ -45,10 +45,12 @@ export function Login() {
         throw new Error(result.errors[0].message);
       }
 
-      const { accessToken, ...profile } = await response.json();
+      const { accessToken, ...profileDetails } = await response.json();
 
       setToken(accessToken);
-      setStoredProfile(profile);
+      setStoredProfile(profileDetails);
+      console.log(token);
+      console.log(storedProfile);
 
       setProfile(profile);
       setError(false);
