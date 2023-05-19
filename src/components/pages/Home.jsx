@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { API_HOLIDAZE_URL, VENUES } from "../../api/constants";
+import { VenueCard } from "../VenueCard";
 
 export function Home() {
   const url = API_HOLIDAZE_URL + VENUES;
@@ -40,7 +41,7 @@ export function Home() {
         <h1>Home page</h1>
         <ul>
           {data.map(venue => (
-            <li>{venue.name}</li>
+            <VenueCard key={venue.id} venue={venue} />
           ))}
         </ul>
       </div>
