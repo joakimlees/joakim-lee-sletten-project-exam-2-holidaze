@@ -5,12 +5,15 @@ import { loginSchema } from "../../../form/schema/loginSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { API_HOLIDAZE_URL } from "../../../../api/constants";
 import { useState } from "react";
+import { useLocalStorage } from "../../../../hooks/useLocalStorage";
 
 export function Login() {
   const [profile, setProfile] = useState();
   const [error, setError] = useState(false);
   const [didUserLogin, setDidUserLogin] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [token, setToken] = useLocalStorage("token", "");
+  const [storedProfile, setStoredProfile] = useLocalStorage("profile", "");
 
   const {
     handleSubmit,
@@ -42,12 +45,14 @@ export function Login() {
         throw new Error(result.errors[0].message);
       }
 
-      const result = await response.json();
+      const { accessToken, ...profile } = await response.json();
 
-      setProfile(result);
+      setToken(accessToken);
+      setStoredProfile(profile);
+
+      setProfile(profile);
       setError(false);
       setDidUserLogin(true);
-      console.log(profile);
     } catch (error) {
       setError(true);
       setDidUserLogin(false);
