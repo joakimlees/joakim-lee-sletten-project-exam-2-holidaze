@@ -44,12 +44,9 @@ export function Login() {
 
       const result = await response.json();
 
-      console.log(result);
-
       setProfile(result);
       setError(false);
       setDidUserLogin(true);
-      console.log(result);
       console.log(profile);
     } catch (error) {
       setError(true);
