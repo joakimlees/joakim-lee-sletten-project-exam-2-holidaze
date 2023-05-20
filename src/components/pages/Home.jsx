@@ -3,7 +3,7 @@ import { API_HOLIDAZE_URL, VENUES } from "../../api/constants";
 import { VenueCard } from "../VenueCard";
 
 export function Home() {
-  const url = API_HOLIDAZE_URL + VENUES;
+  const url = API_HOLIDAZE_URL + VENUES + "?_owner=true&_bookings=true";
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
