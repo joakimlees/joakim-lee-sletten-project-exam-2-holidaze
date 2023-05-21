@@ -1,4 +1,5 @@
 import { formatDate } from "../utils/formatDate";
+import { Link } from "react-router-dom";
 
 export function VenueCard({
   venue: {
@@ -16,13 +17,13 @@ export function VenueCard({
   const dateCreated = formatDate(created);
 
   return (
-    <li className="b-light py-4 px-4 rounded-lg border border-dark">
-      <div className="w-full h-80 border-secondary border-4">
+    <li className="flex flex-col justify-between b-light py-4 px-4 rounded-lg border border-dark max-w-xs">
+      <div className="w-full w-full h-80 border-secondary border-4 sm:border-primary">
         <img src={media[0]} alt="" className="h-full w-full object-cover" />
       </div>
       <article className="font-paragraph text-sm">
         <h3 className="font-headings text-primary font-bold text-base">{venueName}</h3>
-        <dl>
+        <dl className="my-8">
           <div className="flex justify-between mb-4">
             <div>
               <dt className="text-dark font-bold">Price</dt>
@@ -46,6 +47,11 @@ export function VenueCard({
           </div>
         </dl>
       </article>
+      <div className="flex">
+        <Link to="" className="text-center text-light bg-dark rounded-lg py-2 w-full">
+          View venue
+        </Link>
+      </div>
     </li>
   );
 }

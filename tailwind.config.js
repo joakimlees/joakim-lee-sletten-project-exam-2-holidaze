@@ -45,6 +45,9 @@ module.exports = {
         light: "#F5F8FF",
         dark: "#363332",
       },
+      padding: {
+        "full": "100%",
+      },
     },
   },
   plugins: [],
