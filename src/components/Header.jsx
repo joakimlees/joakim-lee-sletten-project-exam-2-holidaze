@@ -10,14 +10,23 @@ export function Header() {
   const [navMenu, setNavMenu] = useState("hidden sm:flex");
   const [isMenuClicked, setIsMenuClicked] = useState(false);
   const [navIcon, setNavIcon] = useState(menu);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function toggleMenu() {
     if (!isMenuClicked) {
       setIsMenuClicked(true);
+      setIsMenuOpen(true);
     } else if (isMenuClicked) {
       setIsMenuClicked(false);
+      setIsMenuOpen(false);
     }
   }
+
+  const closeMenu = () => {
+    if (isMenuOpen) {
+      toggleMenu();
+    }
+  };
 
   useEffect(() => {
     if (!isMenuClicked) {
@@ -36,7 +45,7 @@ export function Header() {
           <img src={navIcon} alt="menu icon mobile/tablet" onClick={toggleMenu} className="w-full" />
         </div>
         <div className="w-32 sm:w-40">
-          <Link to="/">
+          <Link to="/" onClick={closeMenu}>
             <img src={logoLight} alt="holidaze logo" />
           </Link>
         </div>
