@@ -17,27 +17,32 @@ export function VenueCard({
 
   return (
     <li className="b-light py-4 px-4 rounded-lg border border-dark">
-      <div className="max-w-xs">
-        <img src={media[0]} alt="" />
+      <div className="w-full h-80 border-secondary border-4">
+        <img src={media[0]} alt="" className="h-full w-full object-cover" />
       </div>
       <article className="font-paragraph text-sm">
         <h3 className="font-headings text-primary font-bold text-base">{venueName}</h3>
         <dl>
-          <div>
-            <dt className="text-dark font-bold">Price</dt>
-            <dd>{price + ",-"}</dd>
+          <div className="flex justify-between mb-4">
+            <div>
+              <dt className="text-dark font-bold">Price</dt>
+              <dd>{price + ",-"}</dd>
+            </div>
+            <div className="text-right ms-8">
+              <dt className="text-dark font-bold">Country</dt>
+              <dd>{country}</dd>
+            </div>
           </div>
-          <div>
-            <dt className="text-dark font-bold">Country</dt>
-            <dd>{country}</dd>
-          </div>
-          <div>
-            <dt className="text-dark font-bold">created</dt>
-            <dd>{dateCreated}</dd>
-          </div>
-          <div>
-            <dt className="text-dark font-bold">max Guests</dt>
-            <dd>{maxGuests}</dd>
+          <div className="flex justify-between">
+            <div>
+              <dt className="text-dark font-bold">Guest capacity</dt>
+              <dd>{maxGuests}</dd>
+            </div>
+            <div className="text-right ms-8">
+              <dt className="text-dark font-bold">Owner</dt>
+              <dd className="break-all">{ownerName}</dd>
+              <dd className="break-all">{email}</dd>
+            </div>
           </div>
         </dl>
       </article>
