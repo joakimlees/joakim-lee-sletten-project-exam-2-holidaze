@@ -1,4 +1,3 @@
-import { formatDate } from "../utils/formatDate";
 import { Link } from "react-router-dom";
 
 export function VenueCard({
