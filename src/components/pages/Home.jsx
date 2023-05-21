@@ -38,8 +38,8 @@ export function Home() {
   return (
     <main className="grow">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-5">
-        <h1>Home page</h1>
-        <ul className="flex flex-wrap justify-center gap-5 border border-dark border-2">
+        <h1 className="font-headings font-bold text-xl text-center text-primary my-10">Home page</h1>
+        <ul className="flex flex-wrap justify-center gap-5">
           {data.map(venue => (
             <VenueCard key={venue.id} venue={venue} />
           ))}
