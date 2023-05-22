@@ -46,7 +46,7 @@ export function VenueCard({
         </dl>
       </article>
       <div className="flex">
-        <Link to={`/venue/${id}`} className="text-center text-light bg-dark rounded-lg py-2 w-full">
+        <Link to={`/venues/${id}`} className="text-center text-light bg-dark rounded-lg py-2 w-full">
           View venue
         </Link>
       </div>
