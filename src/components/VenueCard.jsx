@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 export function VenueCard({
   venue: {
     name: venueName,
+    id,
     created,
     description,
     media,
@@ -45,7 +46,7 @@ export function VenueCard({
         </dl>
       </article>
       <div className="flex">
-        <Link to="" className="text-center text-light bg-dark rounded-lg py-2 w-full">
+        <Link to={`/venue/${id}`} className="text-center text-light bg-dark rounded-lg py-2 w-full">
           View venue
         </Link>
       </div>

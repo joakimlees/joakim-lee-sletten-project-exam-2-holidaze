@@ -1,31 +1,9 @@
-import { useState, useEffect } from "react";
-import { API_HOLIDAZE_URL, VENUES } from "../../api/constants";
+import { useFetch } from "../../api/hooks/useFetch";
+import { API_HOLIDAZE_VENUES_URL } from "../../api/constants";
 import { VenueCard } from "../VenueCard";
 
 export function Home() {
-  const url = API_HOLIDAZE_URL + VENUES + "?_owner=true&_bookings=true";
-
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoading(true);
-        setError(false);
-        const response = await fetch(url);
-        const data = await response.json();
-        setData(data);
-        return data;
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getData();
-  }, [url]);
+  const { data, loading, error } = useFetch(API_HOLIDAZE_VENUES_URL);
 
   if (loading) {
     return <div className="loading-fetch">loading..................</div>;
