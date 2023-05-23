@@ -4,19 +4,12 @@ import { API_HOLIDAZE_VENUE_URL, BOOKINGS_OWNER } from "../../../../api/constant
 
 export function Venue() {
   const { id } = useParams();
-  const url = `${API_HOLIDAZE_VENUE_URL}/${id}/${BOOKINGS_OWNER}`;
+  const url = `${API_HOLIDAZE_VENUE_URL}/${id}`;
   const { data, loading, error } = useFetch(url);
-  const {
-    name,
-    media,
-    price,
-    created,
-    description,
-    maxGuests,
-    location: { address, continent, country, city, zip },
-    owner: { name: ownerName, email },
-    bookings: { dateFrom, dateTo },
-  } = data;
+
+  console.log(url);
+
+  const { name, media, price, created, description, maxGuests, location: { address, continent, country, city, zip } = {}, owner: { name: ownerName, email } = {}, bookings: { dateFrom, dateTo } = {} } = data || {};
 
   if (loading) {
     return <div className="loading-fetch">loading..................</div>;
