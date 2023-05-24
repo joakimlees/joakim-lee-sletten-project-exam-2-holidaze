@@ -1,10 +1,17 @@
 import Calendar from "react-calendar";
 import { useState } from "react";
 import { formatDate } from "../utils/formatDate";
+import * as calendar from "./calendar/utils";
 
 export function Calender({ bookings }) {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
+
+  const handleDateClick = date => {
+    calendar.handleDateClick(date, isDateBooked, bookings, dateFrom, dateTo, setDateFrom, setDateTo);
+  };
+
+  /*
 
   const handleDateClick = date => {
     if (isDateBooked(date)) {
@@ -28,7 +35,11 @@ export function Calender({ bookings }) {
       setDateTo(null);
     }
   };
+*/
 
+  const maxDate = calendar.getMaxDate(12);
+
+  /*
   function getMaxDate(numberOfMonths) {
     // Get the current date
     const currentDate = new Date();
@@ -40,9 +51,18 @@ export function Calender({ bookings }) {
     return maxDate;
   }
 
+
+
   const maxDate = getMaxDate(12);
   console.log(maxDate);
+*/
 
+  const isDateBooked = date => {
+    const dateBooked = calendar.isDateBooked(bookings, date);
+    return dateBooked;
+  };
+
+  /*
   function isDateBooked(date) {
     if (bookings) {
       return bookings.some(booking => {
@@ -52,6 +72,7 @@ export function Calender({ bookings }) {
       });
     }
   }
+  */
 
   function getTileClassName({ date }) {
     if (isDateBooked(date)) {
