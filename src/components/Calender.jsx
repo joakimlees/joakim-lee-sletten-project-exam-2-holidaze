@@ -35,7 +35,7 @@ export function Calender() {
 
   return (
     <div className="">
-      <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10 bg-light" minDate={new Date()} view="month" onClickDay={handleDateClick} tileClassName={({ date }) => getTileClassName({ date, dateFrom, dateTo })} />
+      <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10 bg-light" minDate={new Date()} view="month" onClickDay={handleDateClick} tileClassName={({ date }) => getTileClassName({ date, dateFrom, dateTo })} prevLabel="«" nextLabel="»" prev2Label="" next2Label="" />
     </div>
   );
 }
