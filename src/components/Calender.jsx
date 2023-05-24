@@ -2,7 +2,7 @@ import Calendar from "react-calendar";
 import { useState } from "react";
 import { formatDate } from "../utils/formatDate";
 
-export function Calender() {
+export function Calender({ bookings }) {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
 
@@ -42,17 +42,7 @@ export function Calender() {
 
   return (
     <div className="">
-      <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10" minDate={new Date()} view="month" onClickDay={handleDateClick} tileClassName={({ date }) => getTileClassName({ date, dateFrom, dateTo })} prevLabel="«" nextLabel="»" prev2Label="" next2Label="" />
+      <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10" minDate={new Date()} view="month" onClickDay={handleDateClick} tileClassName={({ date }) => getTileClassName({ date, dateFrom, dateTo })} prevLabel={<span className="px-2 pb-1 me-2 border font-bold">«</span>} nextLabel={<span className="px-2 pb-1 ms-2 border font-bold">»</span>} prev2Label="" next2Label="" />
     </div>
   );
 }
-
-/*
-
-  return (
-    <div className="">
-      <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10 bg-light" minDate={new Date()} view="month" onClickDay={date => console.log(date)} />
-    </div>
-  );
-}
-*/

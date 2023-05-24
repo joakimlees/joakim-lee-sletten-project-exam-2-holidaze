@@ -8,7 +8,7 @@ export function Venue() {
   const url = `${API_HOLIDAZE_VENUE_URL}/${id}${BOOKINGS_OWNER}`;
   const { data, loading, error } = useFetch(url);
 
-  const { name, media, price, created, description, maxGuests, location: { address, continent, country, city, zip } = {}, owner: { name: ownerName, email } = {}, bookings: { dateFrom, dateTo } = {}, meta: { wifi, parking, pets, breakfast } = {} } = data || {};
+  const { name, media, price, created, description, maxGuests, location: { address, continent, country, city, zip } = {}, owner: { name: ownerName, email } = {}, bookings, bookings: { dateFrom, dateTo } = {}, meta: { wifi, parking, pets, breakfast } = {} } = data || {};
 
   if (loading) {
     return <div className="loading-fetch">loading..................</div>;
@@ -108,7 +108,7 @@ export function Venue() {
               </div>
             </div>
           </dl>
-          <Calender />
+          <Calender bookings={bookings} />
         </div>
       </div>
     </main>
