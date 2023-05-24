@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useFetch } from "../../../../api/hooks/useFetch";
 import { API_HOLIDAZE_VENUE_URL, BOOKINGS_OWNER } from "../../../../api/constants";
-import { Calender } from "../../../Calender";
+import { BookingCalendar } from "../../../calendar";
 
 export function Venue() {
   const { id } = useParams();
@@ -94,11 +94,11 @@ export function Venue() {
                 )}
                 {breakfast ? (
                   <dd className="font-semibold text-primary ">
-                    <span className="text-dark">Breakfast:</span> &#x2713;
+                    <span className="text-dark">Breakfast:</span> Yes
                   </dd>
                 ) : (
                   <dd className="font-semibold text-secondary ">
-                    <span className="text-dark">Breakfast:</span> X
+                    <span className="text-dark">Breakfast:</span> No
                   </dd>
                 )}
               </div>
@@ -108,7 +108,7 @@ export function Venue() {
               </div>
             </div>
           </dl>
-          <Calender bookings={bookings} />
+          <BookingCalendar bookings={bookings} />
         </div>
       </div>
     </main>

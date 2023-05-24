@@ -1,4 +1,4 @@
-import Calendar from "react-calendar";
+/*import Calendar from "react-calendar";
 import { useState } from "react";
 import { formatDate } from "../utils/formatDate";
 import * as calendar from "./calendar/utils";
@@ -11,7 +11,7 @@ export function Calender({ bookings }) {
     calendar.handleDateClick(date, isDateBooked, bookings, dateFrom, dateTo, setDateFrom, setDateTo);
   };
 
-  /*
+  
 
   const handleDateClick = date => {
     if (isDateBooked(date)) {
@@ -35,11 +35,11 @@ export function Calender({ bookings }) {
       setDateTo(null);
     }
   };
-*/
+
 
   const maxDate = calendar.getMaxDate(12);
 
-  /*
+  
   function getMaxDate(numberOfMonths) {
     // Get the current date
     const currentDate = new Date();
@@ -55,14 +55,14 @@ export function Calender({ bookings }) {
 
   const maxDate = getMaxDate(12);
   console.log(maxDate);
-*/
+
 
   const isDateBooked = date => {
     const dateBooked = calendar.isDateBooked(bookings, date);
     return dateBooked;
   };
 
-  /*
+  
   function isDateBooked(date) {
     if (bookings) {
       return bookings.some(booking => {
@@ -72,14 +72,14 @@ export function Calender({ bookings }) {
       });
     }
   }
-  */
+  
 
   const getTileClassName = date => {
     const tileClassName = calendar.getTileClassName(date, isDateBooked, dateFrom, dateTo);
     return tileClassName;
   };
 
-  /*
+  
   function getTileClassName({ date }) {
     if (isDateBooked(date)) {
       return "bg-secondary"; // Styling for booked dates
@@ -95,7 +95,7 @@ export function Calender({ bookings }) {
     }
     return "";
   }
-  */
+  
 
   const dateOne = formatDate(dateFrom);
   const dateTwo = formatDate(dateTo);
@@ -108,3 +108,4 @@ export function Calender({ bookings }) {
     </div>
   );
 }
+*/
