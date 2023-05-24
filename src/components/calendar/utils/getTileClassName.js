@@ -28,5 +28,6 @@ export function getTileClassName({ date }, isDateBooked, dateFrom, dateTo) {
     //if the condition check is true, adds the class
     return "bg-light";
   }
+  //return an empty string if none of the conditions are met
   return "";
 }
