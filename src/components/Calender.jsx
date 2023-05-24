@@ -74,6 +74,12 @@ export function Calender({ bookings }) {
   }
   */
 
+  const getTileClassName = date => {
+    const tileClassName = calendar.getTileClassName(date, isDateBooked, dateFrom, dateTo);
+    return tileClassName;
+  };
+
+  /*
   function getTileClassName({ date }) {
     if (isDateBooked(date)) {
       return "bg-secondary"; // Styling for booked dates
@@ -89,6 +95,7 @@ export function Calender({ bookings }) {
     }
     return "";
   }
+  */
 
   const dateOne = formatDate(dateFrom);
   const dateTwo = formatDate(dateTo);
