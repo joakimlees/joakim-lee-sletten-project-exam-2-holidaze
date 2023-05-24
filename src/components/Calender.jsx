@@ -19,27 +19,23 @@ export function Calender() {
     }
   };
 
+  function getTileClassName({ date, dateFrom, dateTo }) {
+    if (dateFrom && dateTo) {
+      // Both "From" and "To" dates are selected, apply styling to dates in range
+      return date >= dateFrom && date <= dateTo ? "bg-blue-500 text-white" : "";
+    } else if (dateFrom && date.getTime() === dateFrom.getTime()) {
+      // Only "From" date is selected, apply special styling
+      return "bg-green-500 text-white";
+    } else if (dateFrom && !dateTo && date >= dateFrom) {
+      // "From" date is selected, apply styling to dates from "From" to current date
+      return "bg-green-200";
+    }
+    return ""; // Default styling for other dates
+  }
+
   return (
     <div className="">
-      <Calendar
-        className="font-paragraphs w-full h-full border p-10 mt-10 mb-10 bg-light"
-        minDate={new Date()}
-        view="month"
-        onClickDay={handleDateClick}
-        tileClassName={({ date }) => {
-          if (dateFrom && dateTo) {
-            // Both "From" and "To" dates are selected, apply styling to dates in range
-            return date >= dateFrom && date <= dateTo ? "bg-blue-500 text-white" : "";
-          } else if (dateFrom && date.getTime() === dateFrom.getTime()) {
-            // Only "From" date is selected, apply special styling
-            return "bg-green-500 text-white";
-          } else if (dateFrom && !dateTo && date >= dateFrom) {
-            // "From" date is selected, apply styling to dates from "From" to current date
-            return "bg-green-200";
-          }
-          return ""; // Default styling for other dates
-        }}
-      />
+      <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10 bg-light" minDate={new Date()} view="month" onClickDay={handleDateClick} tileClassName={({ date }) => getTileClassName({ date, dateFrom, dateTo })} />
     </div>
   );
 }
