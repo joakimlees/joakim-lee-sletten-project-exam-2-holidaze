@@ -1,3 +1,4 @@
+//function to format date from for example new date() to be formatted as mm/dd/yy
 export function formatDate(date) {
   if (!date) {
     return ""; // Return empty string if date is null
