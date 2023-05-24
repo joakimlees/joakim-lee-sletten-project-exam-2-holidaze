@@ -29,6 +29,20 @@ export function Calender({ bookings }) {
     }
   };
 
+  function getMaxDate(numberOfMonths) {
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the maxDate by adding 12 months to the current date
+    const maxDate = new Date();
+    maxDate.setMonth(currentDate.getMonth() + numberOfMonths);
+
+    return maxDate;
+  }
+
+  const maxDate = getMaxDate(12);
+  console.log(maxDate);
+
   function isDateBooked(date) {
     if (bookings) {
       return bookings.some(booking => {
@@ -62,7 +76,7 @@ export function Calender({ bookings }) {
   console.log(dateTwo);
   return (
     <div className="">
-      <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10" minDate={new Date()} view="month" onClickDay={handleDateClick} tileClassName={({ date }) => getTileClassName({ date, dateFrom, dateTo })} prevLabel={<span className="px-2 pb-1 me-2 border font-bold">«</span>} nextLabel={<span className="px-2 pb-1 ms-2 border font-bold">»</span>} prev2Label="" next2Label="" />
+      <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10" minDate={new Date()} maxDate={maxDate} view="month" onClickDay={handleDateClick} tileClassName={({ date }) => getTileClassName({ date, dateFrom, dateTo })} prevLabel={<span className="px-2 pb-1 me-2 border font-bold">«</span>} nextLabel={<span className="px-2 pb-1 ms-2 border font-bold">»</span>} prev2Label="" next2Label="" />
     </div>
   );
 }
