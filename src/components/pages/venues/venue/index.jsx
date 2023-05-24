@@ -18,7 +18,7 @@ export function Venue() {
     return <div className="error-fetch">Sorry.. something went wrong. try to reload the site or try again later</div>;
   }
 
-  console.log(data);
+  console.log("mounted");
 
   return (
     <main className="grow">

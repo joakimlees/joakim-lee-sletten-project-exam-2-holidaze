@@ -7,7 +7,13 @@ export function useFetch(url) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetchData(url, setData, setLoading, setError);
+    let isMounted = true;
+
+    fetchData(url, isMounted, setData, setLoading, setError);
+
+    return () => {
+      isMounted = false;
+    };
   }, [url]);
 
   return { data, error, loading };
