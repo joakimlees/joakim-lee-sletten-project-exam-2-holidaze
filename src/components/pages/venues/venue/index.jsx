@@ -40,8 +40,11 @@ export function Venue() {
                 <dd className="break-all">{email}</dd>
               </div>
             </div>
+            <BookingCalendar bookings={bookings} />
             <div className="flex mb-8">
-              <Link className="text-center text-light bg-dark rounded-lg py-4 w-full">Check availability</Link>
+              <Link to={`/booking/${id}`} className="text-center text-light bg-dark rounded-lg py-4 w-full">
+                Book selected dates
+              </Link>
             </div>
             <div className="flex flex-col gap-6 mb-4 bg-light p-6 rounded-lg">
               <div>
@@ -108,7 +111,6 @@ export function Venue() {
               </div>
             </div>
           </dl>
-          <BookingCalendar bookings={bookings} />
         </div>
       </div>
     </main>
