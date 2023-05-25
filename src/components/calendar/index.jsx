@@ -23,14 +23,20 @@ export function BookingCalendar({ bookings }) {
     return tileClassName;
   };
 
-  const dateOne = formatDate(dateFrom);
-  const dateTwo = formatDate(dateTo);
+  const fromDate = formatDate(dateFrom);
+  const toDate = formatDate(dateTo);
 
-  console.log(dateOne);
-  console.log(dateTwo);
   return (
-    <div className="">
+    <div className="max-w-4xl mx-auto">
       <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10" minDate={new Date()} maxDate={maxDate} view="month" onClickDay={handleDateClick} tileClassName={getTileClassName} prevLabel={<span className="px-2 pb-1 me-2 border font-bold">«</span>} nextLabel={<span className="px-2 pb-1 ms-2 border font-bold">»</span>} prev2Label="" next2Label="" />
+      <div>
+        <p>
+          Date from: <time dateTime={fromDate}>{fromDate}</time>
+        </p>
+        <p>
+          Date to: <time dateTime={toDate}>{toDate}</time>
+        </p>
+      </div>
     </div>
   );
 }

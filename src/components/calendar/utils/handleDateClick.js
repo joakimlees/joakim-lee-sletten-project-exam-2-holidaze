@@ -19,7 +19,9 @@ export function handleDateClick(date, isDateBooked, bookings, dateFrom, dateTo, 
   if (!dateFrom && !dateTo) {
     setDateFrom(date);
     //if a dateFrom is selected, but not a dateTo and the date selected is greater then the dateFrom.
-  } else if (dateFrom && !dateTo && date > dateFrom) {
+  }
+
+  if (dateFrom && !dateTo && date > dateFrom) {
     // finding
     const selectedRangeStart = new Date(Math.min(dateFrom, date)); // returns the smallest date between dateFrom and the clicked date.
     const selectedRangeEnd = new Date(Math.max(dateFrom, date)); // returns the largest date between dateFrom and the clicked date.
@@ -29,10 +31,17 @@ export function handleDateClick(date, isDateBooked, bookings, dateFrom, dateTo, 
     // if selectedRangeStart is less or equal to dateTo- AND selectedRangedEnd is greater or equal to dateFrom property in one of the objects in the booking array.
     const isOverlap = bookings.some(booking => selectedRangeStart <= new Date(booking.dateTo) && selectedRangeEnd >= new Date(booking.dateFrom));
 
+    if (isOverlap) {
+      setDateFrom(date);
+    }
+
     // if date selected dates don't overlap existing bookings in the booking array, set dateTo to the selected date.
     if (!isOverlap) {
       setDateTo(date);
     }
+    // if the both from and to date is selected and the date clicked is greater then dateFrom but less or equal to dateTo, set date to to date (new date to).
+  } else if (dateFrom && dateTo && date <= dateTo && date > dateFrom) {
+    setDateTo(date);
   } else {
     // Reset both from and to state and set new fromDate state to the clicked date.
     setDateFrom(date);
