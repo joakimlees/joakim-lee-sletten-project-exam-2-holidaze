@@ -18,22 +18,23 @@ export function handleDateClick(date, isDateBooked, bookings, dateFrom, dateTo, 
   // if no dates is selected, set the dateFrom to be the selected date.
   if (!dateFrom && !dateTo) {
     setDateFrom(date);
+    //if a dateFrom is selected, but not a dateTo and the date selected is greater then the dateFrom.
   } else if (dateFrom && !dateTo && date > dateFrom) {
-    //  "from" date is set, but "to" date is not set, and clicked date is later than or equal to "from" date, set "to" date
-    const selectedRangeStart = new Date(Math.min(dateFrom, date)); // Calculate the minimum date between dateFrom and the clicked date
-    const selectedRangeEnd = new Date(Math.max(dateFrom, date)); // Calculate the maximum date between dateFrom and the clicked date
+    // finding
+    const selectedRangeStart = new Date(Math.min(dateFrom, date)); // returns the smallest date between dateFrom and the clicked date.
+    const selectedRangeEnd = new Date(Math.max(dateFrom, date)); // returns the largest date between dateFrom and the clicked date.
 
-    // Check for overlap by iterating over the bookings array and comparing the selected range with each booking
-    // The arrow function inside the some() method is used to perform the comparison
-
+    // function which return a boolean true or false.
+    // checking if at least one of the elements, in this case booking, meats the provided condition.
+    // if selectedRangeStart is less or equal to dateTo- AND selectedRangedEnd is greater or equal to dateFrom property in one of the objects in the booking array.
     const isOverlap = bookings.some(booking => selectedRangeStart <= new Date(booking.dateTo) && selectedRangeEnd >= new Date(booking.dateFrom));
 
-    // If there is no overlap, set the clicked date as the "to" date
+    // if date selected dates don't overlap existing bookings in the booking array, set dateTo to the selected date.
     if (!isOverlap) {
       setDateTo(date);
     }
   } else {
-    // Reset both "from" and "to" dates and set new "from" date
+    // Reset both from and to state and set new fromDate state to the clicked date.
     setDateFrom(date);
     setDateTo(null);
   }
