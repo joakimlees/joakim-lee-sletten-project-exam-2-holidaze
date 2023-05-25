@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 import { useState } from "react";
 import { formatDate } from "../../utils/formatDate";
 
-export function BookingCalendar({ bookings }) {
+export function BookingCalendar({ bookings, venueId, maxGuests }) {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
 
@@ -25,6 +25,10 @@ export function BookingCalendar({ bookings }) {
 
   const fromDate = formatDate(dateFrom);
   const toDate = formatDate(dateTo);
+
+  const eee = JSON.stringify(dateFrom);
+
+  console.log(eee);
 
   return (
     <div className="max-w-4xl mx-auto">
