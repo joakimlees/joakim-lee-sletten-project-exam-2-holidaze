@@ -3,29 +3,21 @@ import Calendar from "react-calendar";
 import { useEffect, useState } from "react";
 import { formatDate } from "../../utils/formatDate";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { Link } from "react-router-dom";
 
 export function BookingCalendar({ bookings, venueId, venueName, maxGuests, price }) {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
   const [guestValue, setGuestValue] = useState("");
+  const [isActive, setIsActive] = useState(false);
 
   const handleDateClick = date => {
     calendar.handleDateClick(date, isDateBooked, bookings, dateFrom, dateTo, setDateFrom, setDateTo);
   };
 
-  const handleInputChange = event => {
-    const inputValue = event.target.value;
-
-    const maxValue = maxGuests;
-    // Check if the input value exceeds the maximum value
-    if (inputValue > maxValue) {
-      setGuestValue(maxValue.toString()); // Set the value to the maximum value
-    } else {
-      setGuestValue(inputValue); // Set the value to the input value
-    }
+  const handleMaxGuestValueChange = event => {
+    calendar.handleInputChange(event, maxGuests, setGuestValue);
   };
-
-  console.log(typeof guestValue);
 
   const maxDate = calendar.getMaxDate(12);
 
@@ -50,6 +42,20 @@ export function BookingCalendar({ bookings, venueId, venueName, maxGuests, price
   const [profile] = useLocalStorage("profile");
 
   const { name: username, email: userEmail } = profile;
+
+  const activeBookingCTA = "font-buttons text-base max-w-xl text-center text-light bg-primary rounded-lg py-4 w-full mx-auto";
+  const inActiveBookingCTA = "font-buttons text-base max-w-xl text-center text-light bg-primary rounded-lg py-4 w-full mx-auto opacity-50";
+  const completeBookingUrl = "/booking/success";
+
+  useEffect(() => {
+    function completeBooking() {
+      if (dateFrom && dateTo && guestValue !== "0" && total > 0) {
+        setIsActive(true);
+      } else setIsActive(false);
+    }
+
+    completeBooking();
+  }, [total, guestValue]);
 
   const bookingDetails = JSON.stringify(dateFrom);
 
@@ -96,12 +102,17 @@ export function BookingCalendar({ bookings, venueId, venueName, maxGuests, price
           </div>
           <div className="text-right">
             <p>
-              Number of guests: <input className="border border-dark w-14 appearance-none" type="number" value={guestValue} onChange={handleInputChange} />
+              Number of guests: <input className="border border-dark w-14 appearance-none" type="number" value={guestValue} onChange={handleMaxGuestValueChange} />
             </p>
             <p className="text-base">
               Total price: <span className="font-semibold">{totalPrice}</span>
             </p>
           </div>
+        </div>
+        <div className="flex my-20">
+          <Link to={isActive ? completeBookingUrl : "#"} className={isActive ? activeBookingCTA : inActiveBookingCTA}>
+            book now
+          </Link>
         </div>
       </article>
     </article>
