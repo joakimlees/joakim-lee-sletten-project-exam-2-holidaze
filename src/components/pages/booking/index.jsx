@@ -8,7 +8,7 @@ export function Booking() {
   const url = `${API_HOLIDAZE_VENUE_URL}/${id}${BOOKINGS_OWNER}`;
   const { data, loading, error } = useFetch(url);
 
-  const { name, media, price, created, description, maxGuests, location: { address, continent, country, city, zip } = {}, owner: { name: ownerName, email } = {}, bookings, bookings: { dateFrom, dateTo } = {}, meta: { wifi, parking, pets, breakfast } = {} } = data || {};
+  const { name, media, price, created, description, maxGuests, location, location: { address, continent, country, city, zip } = {}, owner: { name: ownerName, email } = {}, bookings, bookings: { dateFrom, dateTo } = {}, meta: { wifi, parking, pets, breakfast } = {} } = data || {};
 
   return (
     <main className="grow">
@@ -17,7 +17,7 @@ export function Booking() {
         <div className="my-14 font-buttons text-primary max-w-4xl mx-auto">
           <Link to={`/venues/${id}`}>&lt; &lt; Back to Venue</Link>
         </div>
-        <BookingCalendar bookings={bookings} venueId={id} maxGuests={maxGuests} />
+        <BookingCalendar bookings={bookings} venueId={id} maxGuests={maxGuests} price={price} location={location} venueName={name} />
       </div>
     </main>
   );
