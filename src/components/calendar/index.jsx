@@ -130,7 +130,24 @@ export function BookingCalendar({ bookings, venueId, venueName, maxGuests, price
             </p>
           </div>
         </div>
-        <div className="flex my-20">
+        {loading ? <div className="font-headings text-center text-base text-dark mb-2 mt-8">Loading...</div> : ""}
+        {error ? (
+          <div>
+            <h4 className="font-headings font-bold text-xl text-center text-secondary mt-16">Sorry... something went wrong </h4>
+            <p className="font-paragraph text-base text-center text-secondary">We where not able to complete your booking. Please try again or contact our support.</p>
+          </div>
+        ) : (
+          ""
+        )}
+        {data && !error && !loading ? (
+          <div>
+            <h4 className="font-headings font-bold text-xl text-center text-primary mt-16">Your booking is completed</h4>
+            <p className="font-paragraph text-base text-center text-primary">You can manage and view your bookings in your profile</p>
+          </div>
+        ) : (
+          ""
+        )}
+        <div className="flex mb-20 mt-10">
           <button className={isActive ? activeBookingCTA : inActiveBookingCTA} disabled={isActive ? false : true} onClick={handleCompleteBooking}>
             book now
           </button>
