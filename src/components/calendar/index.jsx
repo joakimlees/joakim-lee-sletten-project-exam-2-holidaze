@@ -4,13 +4,16 @@ import { useEffect, useState } from "react";
 import { formatDate } from "../../utils/formatDate";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { Link } from "react-router-dom";
+import { API_HOLIDAZE_URL } from "../../api/constants";
+import { useAuthFetch } from "../../api/auth/useAuthFetch";
 
 export function BookingCalendar({ bookings, venueId, venueName, maxGuests, price }) {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
-  const [guestValue, setGuestValue] = useState("");
+  const [guestValue, setGuestValue] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
+  console.log(guestValue);
   const handleDateClick = date => {
     calendar.handleDateClick(date, isDateBooked, bookings, dateFrom, dateTo, setDateFrom, setDateTo);
   };
@@ -48,16 +51,34 @@ export function BookingCalendar({ bookings, venueId, venueName, maxGuests, price
   const completeBookingUrl = "/booking/success";
 
   useEffect(() => {
-    function completeBooking() {
-      if (dateFrom && dateTo && guestValue !== "0" && total > 0) {
+    function activateCTA() {
+      if (dateFrom && dateTo && guestValue > 0 && total > 0) {
         setIsActive(true);
       } else setIsActive(false);
     }
 
-    completeBooking();
+    activateCTA();
   }, [total, guestValue]);
 
-  const bookingDetails = JSON.stringify(dateFrom);
+  const bookingData = {
+    "dateFrom": dateFrom,
+    "dateTo": dateTo,
+    "guests": guestValue,
+    "venueId": venueId,
+  };
+
+  const method = "post";
+
+  const { data, loading, error, fetchWithAuth } = useAuthFetch();
+
+  const handleCompleteBooking = async () => {
+    const url = API_HOLIDAZE_URL + "/bookings";
+
+    await fetchWithAuth(url, {
+      method,
+      body: JSON.stringify(bookingData),
+    });
+  };
 
   return (
     <article className="max-w-4xl mx-auto">
@@ -110,9 +131,9 @@ export function BookingCalendar({ bookings, venueId, venueName, maxGuests, price
           </div>
         </div>
         <div className="flex my-20">
-          <Link to={isActive ? completeBookingUrl : "#"} className={isActive ? activeBookingCTA : inActiveBookingCTA}>
+          <button className={isActive ? activeBookingCTA : inActiveBookingCTA} disabled={isActive ? false : true} onClick={handleCompleteBooking}>
             book now
-          </Link>
+          </button>
         </div>
       </article>
     </article>

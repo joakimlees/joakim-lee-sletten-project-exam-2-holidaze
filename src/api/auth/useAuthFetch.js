@@ -1,49 +1,45 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
-// authentication function. Which returns the correct header for the user (with the token).
-export function headers() {
-  //gets the token from local storage using the useLocalStorage hook.
-  const [token] = useLocalStorage("token");
-
-  return {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  };
-}
-
 // returns fetch, with the correct header.
-export function useAuthFetch(url, options = {}) {
+export function useAuthFetch() {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [token] = useLocalStorage("token");
 
-  useEffect(() => {
-    let isMounted = true;
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
 
-    setLoading(true);
-    setError(false);
+  async function fetchWithAuth(url, options = {}) {
+    try {
+      setLoading(true);
+      setError(false);
+      const response = fetch(url, {
+        ...options,
+        headers,
+      });
 
-    async function getAuthData() {
-      try {
-        const response = fetch(url, {
-          ...options,
-          headers: headers(),
-        });
-
-        const data = await response.json();
-        if (isMounted) {
-          setData(data);
-        }
-      } catch (error) {
+      if (!response.ok) {
+        const result = await response.json();
         setError(true);
-      } finally {
-        setLoading(false);
       }
+
+      const data = await response.json();
+      setError(false);
+
+      setData(data);
+      console.log("booking completed");
+    } catch (error) {
+      setError(true);
+      console.log("error");
+    } finally {
+      setLoading(false);
+      console.log("finally text");
     }
+  }
 
-    getAuthData();
-  }, [url]);
-
-  return { data, loading, error };
+  return { data, loading, error, fetchWithAuth };
 }
