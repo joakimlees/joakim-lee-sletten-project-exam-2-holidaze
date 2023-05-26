@@ -3,7 +3,6 @@ import Calendar from "react-calendar";
 import { useEffect, useState } from "react";
 import { formatDate } from "../../utils/formatDate";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { Link } from "react-router-dom";
 import { API_HOLIDAZE_URL } from "../../api/constants";
 import { useAuthFetch } from "../../api/auth/useAuthFetch";
 

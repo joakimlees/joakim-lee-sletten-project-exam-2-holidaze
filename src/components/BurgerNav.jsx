@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export function BurgerNav() {
+  const [profile] = useLocalStorage("profile");
+
+  const name = profile.name;
+
   return (
     <nav>
       <ul className="font-buttons font-normal text-base text-white sm:flex sm:flex-col">
@@ -21,10 +26,9 @@ export function BurgerNav() {
             <Link to="/contact">Contact</Link>
           </li>
         </div>
-
         <div className="mb-10 border-b-2 pb-4">
           <li className="my-2">
-            <Link to="/profile">Profile</Link>
+            <Link to={`/profile/${name}`}>Profile</Link>
           </li>
           <li className="my-2">
             <Link to="/bookings">Bookings</Link>
