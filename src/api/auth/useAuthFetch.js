@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
-// returns fetch, with the correct header.
 export function useAuthFetch() {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
