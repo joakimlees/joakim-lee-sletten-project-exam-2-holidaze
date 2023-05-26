@@ -17,7 +17,7 @@ export function Booking() {
         <div className="my-14 font-buttons text-primary max-w-4xl mx-auto">
           <Link to={`/venues/${id}`}>&lt; &lt; Back to Venue</Link>
         </div>
-        <BookingCalendar bookings={bookings} venueId={id} maxGuests={maxGuests} price={price} location={location} venueName={name} />
+        <BookingCalendar bookings={bookings} venueLocation={location} venueId={id} maxGuests={maxGuests} price={price} venueName={name} />
       </div>
     </main>
   );

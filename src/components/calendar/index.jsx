@@ -1,17 +1,31 @@
 import * as calendar from "./utils";
 import Calendar from "react-calendar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formatDate } from "../../utils/formatDate";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { json } from "react-router-dom";
 
-export function BookingCalendar({ bookings, venueId, venueName, location, maxGuests, price }) {
+export function BookingCalendar({ bookings, venueId, venueName, maxGuests, price }) {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
+  const [guestValue, setGuestValue] = useState("");
 
   const handleDateClick = date => {
     calendar.handleDateClick(date, isDateBooked, bookings, dateFrom, dateTo, setDateFrom, setDateTo);
   };
+
+  const handleInputChange = event => {
+    const inputValue = event.target.value;
+
+    const maxValue = maxGuests;
+    // Check if the input value exceeds the maximum value
+    if (inputValue > maxValue) {
+      setGuestValue(maxValue.toString()); // Set the value to the maximum value
+    } else {
+      setGuestValue(inputValue); // Set the value to the input value
+    }
+  };
+
+  console.log(typeof guestValue);
 
   const maxDate = calendar.getMaxDate(12);
 
@@ -30,58 +44,22 @@ export function BookingCalendar({ bookings, venueId, venueName, location, maxGue
   const total = nights * price;
   const totalPrice = total.toString();
 
-  if (maxGuests) {
-    const guestMax = maxGuests.toString();
-    console.log(guestMax);
-  }
-
-  const { address, city, zip, country, continent } = location;
-
   const fromDate = formatDate(dateFrom);
   const toDate = formatDate(dateTo);
 
   const [profile] = useLocalStorage("profile");
 
-  const { name, email, venueManager } = profile;
+  const { name: username, email: userEmail } = profile;
 
   const bookingDetails = JSON.stringify(dateFrom);
 
   return (
     <article className="max-w-4xl mx-auto">
       <h2 className="font-headings font-bold text-base text-center text-dark my-10">Booking information</h2>
-      <article>
-        <h3 className="font-headings font-bold text-base text-center text-primary my-10">Venue information</h3>
-        <div className="flex justify-between font-paragraph">
-          <div>
-            <p>
-              Venue name: <span className="font-semibold">{venueName}</span>
-            </p>
-            <p>
-              Country: <span className="font-semibold">{country ? country : "no information"}</span>
-            </p>
-            <p>
-              Continent: <span className="font-semibold">{continent ? continent : "no information"}</span>
-            </p>
-          </div>
-          <div className="text-right">
-            <p>
-              City: <span className="font-semibold">{city ? city : "no information"}</span>
-            </p>
-            <p>
-              Address: <span className="font-semibold">{address ? address : "no information"}</span>
-            </p>
-            <p>
-              Zip: <span className="font-semibold">{zip ? zip : "no information"}</span>
-            </p>
-          </div>
-        </div>
-      </article>
-      <article>
-        <h3 className="font-headings font-bold text-center text-sm text-primary my-10">Select dates you wish to book</h3>
-        <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10" minDate={new Date()} maxDate={maxDate} view="month" onClickDay={handleDateClick} tileClassName={getTileClassName} prevLabel={<span className="px-2 pb-1 me-2 border font-bold">«</span>} nextLabel={<span className="px-2 pb-1 ms-2 border font-bold">»</span>} prev2Label="" next2Label="" />
-      </article>
       <article className="font-paragraph text-sm">
-        <h3 className="font-headings font-bold text-base text-center text-primary my-10">Booking details</h3>
+        <h3 className="font-headings font-bold text-sm text-center text-primary my-10">Choose when you want to book the venue</h3>
+        <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10" minDate={new Date()} maxDate={maxDate} view="month" onClickDay={handleDateClick} tileClassName={getTileClassName} prevLabel={<span className="px-2 pb-1 me-2 border font-bold">«</span>} nextLabel={<span className="px-2 pb-1 ms-2 border font-bold">»</span>} prev2Label="" next2Label="" />
+        <h3 className="font-headings font-bold text-sm text-dark mb-4">Booking details</h3>
         <div className="flex justify-between font-paragraph">
           <div>
             <p>
@@ -104,7 +82,23 @@ export function BookingCalendar({ bookings, venueId, venueName, location, maxGue
             <p>
               Nights: <span className="font-semibold">{nights}</span>
             </p>
-            <p className="text-xl">
+          </div>
+        </div>
+        <h3 className="font-headings font-bold text-sm text-dark mb-2 mt-8">Your contact information</h3>
+        <div className="flex justify-between font-paragraph">
+          <div>
+            <p>
+              Username: <span className="font-semibold">{username}</span>
+            </p>
+            <p>
+              Email: <span className="font-semibold">{userEmail}</span>
+            </p>
+          </div>
+          <div className="text-right">
+            <p>
+              Number of guests: <input className="border border-dark w-14 appearance-none" type="number" value={guestValue} onChange={handleInputChange} />
+            </p>
+            <p className="text-base">
               Total price: <span className="font-semibold">{totalPrice}</span>
             </p>
           </div>
