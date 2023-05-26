@@ -26,21 +26,29 @@ export function BookingCalendar({ bookings, venueId, maxGuests }) {
   const fromDate = formatDate(dateFrom);
   const toDate = formatDate(dateTo);
 
-  const eee = JSON.stringify(dateFrom);
-
-  console.log(eee);
+  const bookingDetails = JSON.stringify(dateFrom);
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <article className="max-w-4xl mx-auto">
+      <h2 className="font-headings font-bold text-base text-center text-primary my-10">Select the dates you wish to book</h2>
       <Calendar className="font-paragraphs w-full h-full border p-10 mt-10 mb-10" minDate={new Date()} maxDate={maxDate} view="month" onClickDay={handleDateClick} tileClassName={getTileClassName} prevLabel={<span className="px-2 pb-1 me-2 border font-bold">«</span>} nextLabel={<span className="px-2 pb-1 ms-2 border font-bold">»</span>} prev2Label="" next2Label="" />
-      <div>
-        <p>
-          Date from: <time dateTime={fromDate}>{fromDate}</time>
-        </p>
-        <p>
-          Date to: <time dateTime={toDate}>{toDate}</time>
-        </p>
-      </div>
-    </div>
+      <article className="font-paragraph text-sm">
+        <h2 className="font-headings font-bold text-base text-center text-primary my-10">Booking information</h2>
+        <div>
+          <p>
+            Date from:{" "}
+            <time className="font-semibold" dateTime={fromDate}>
+              {fromDate}
+            </time>
+          </p>
+          <p>
+            Date to:{" "}
+            <time className="font-semibold" dateTime={toDate}>
+              {toDate}
+            </time>
+          </p>
+        </div>
+      </article>
+    </article>
   );
 }

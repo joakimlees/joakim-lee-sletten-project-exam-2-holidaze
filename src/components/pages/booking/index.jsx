@@ -14,10 +14,10 @@ export function Booking() {
     <main className="grow">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-5">
         <h1 className="font-headings font-bold text-xl text-center text-primary my-10">Booking for {name}</h1>
-        <BookingCalendar bookings={bookings} venueId={id} maxGuests={maxGuests} />
-        <div>
-          <Link to={`/venues/${id}`}>Back to Venue</Link>
+        <div className="my-14 font-buttons text-primary max-w-4xl mx-auto">
+          <Link to={`/venues/${id}`}>&lt; &lt; Back to Venue</Link>
         </div>
+        <BookingCalendar bookings={bookings} venueId={id} maxGuests={maxGuests} />
       </div>
     </main>
   );
