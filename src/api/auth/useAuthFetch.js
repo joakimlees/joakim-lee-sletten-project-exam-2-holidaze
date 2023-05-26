@@ -17,7 +17,7 @@ export function useAuthFetch() {
     try {
       setLoading(true);
       setError(false);
-      const response = fetch(url, {
+      const response = await fetch(url, {
         ...options,
         headers,
       });
