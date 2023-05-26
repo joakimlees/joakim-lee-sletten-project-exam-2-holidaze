@@ -2,6 +2,7 @@ import * as calendar from "./utils";
 import Calendar from "react-calendar";
 import { useState } from "react";
 import { formatDate } from "../../utils/formatDate";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 export function BookingCalendar({ bookings, venueId, maxGuests }) {
   const [dateFrom, setDateFrom] = useState();
@@ -25,6 +26,12 @@ export function BookingCalendar({ bookings, venueId, maxGuests }) {
 
   const fromDate = formatDate(dateFrom);
   const toDate = formatDate(dateTo);
+
+  const [profile] = useLocalStorage("profile");
+
+  const { name, email, venueManager } = profile;
+
+  console.log(venueManager);
 
   const bookingDetails = JSON.stringify(dateFrom);
 
