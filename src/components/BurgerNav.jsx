@@ -28,7 +28,7 @@ export function BurgerNav() {
         </div>
         <div className="mb-10 border-b-2 pb-4">
           <li className="my-2">
-            <Link to={`/profile/${name}`}>Profile</Link>
+            <Link to={`/profiles/${name}`}>Profile</Link>
           </li>
           <li className="my-2">
             <Link to="/bookings">Bookings</Link>

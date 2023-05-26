@@ -9,6 +9,7 @@ import { Register } from "./components/pages/profile/Register";
 import { Login } from "./components/pages/profile/login";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import { UserBookings } from "./components/pages/profile/bookings";
 
 function App() {
   return (
@@ -19,9 +20,10 @@ function App() {
           <Route path="venues" element={<Venues />} />
           <Route path="venues/:id" element={<Venue />} />
           <Route path="booking/:id" element={<Booking />} />
-          <Route path="profile/:name" element={<Profile />} />
+          <Route path="profiles/:name" element={<Profile />} />
           <Route path="profile/register" element={<Register />} />
           <Route path="profile/login" element={<Login />} />
+          <Route path="profiles/:name/bookings" element={<UserBookings />} />
         </Route>
       </Routes>
     </div>
