@@ -56,7 +56,7 @@ export function BookingCalendar({ bookings, venueId, maxGuests, price }) {
     }
 
     activateCTA();
-  }, [total, guestValue]);
+  }, [total, guestValue, dateFrom, dateTo]);
 
   const bookingData = {
     "dateFrom": dateFrom,

@@ -16,17 +16,13 @@ export function UserBookings() {
 
   useEffect(() => {
     async function getBookings() {
-      await fetchWithAuth(
-        url,
-        {
-          method,
-        },
-        [url]
-      );
+      await fetchWithAuth(url, {
+        method,
+      });
     }
 
     getBookings();
-  }, [url]);
+  }, [url, fetchWithAuth]);
 
   if (loading) {
     return <div className="loading-fetch">loading..................</div>;

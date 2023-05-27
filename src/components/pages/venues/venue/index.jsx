@@ -1,7 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useFetch } from "../../../../api/hooks/useFetch";
 import { API_HOLIDAZE_VENUE_URL, BOOKINGS_OWNER } from "../../../../api/constants";
-import { BookingCalendar } from "../../../calendar";
 
 export function Venue() {
   const { id } = useParams();
