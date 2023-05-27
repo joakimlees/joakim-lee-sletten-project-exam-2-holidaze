@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useEffect, useState } from "react";
 
 export function BurgerNav() {
   const [profile] = useLocalStorage("profile");
+  const [profileName, setProfileName] = useState("");
 
-  const name = profile.name;
+  useEffect(() => {
+    if (profile) {
+      setProfileName(profile.name);
+    }
+  }, [profile]);
 
   return (
     <nav>
@@ -28,7 +34,7 @@ export function BurgerNav() {
         </div>
         <div className="mb-10 border-b-2 pb-4">
           <li className="my-2">
-            <Link to={`/profiles/${name}`}>Profile</Link>
+            <Link to={`/profiles/${profileName}`}>Profile</Link>
           </li>
           <li className="my-2">
             <Link to="/bookings">Bookings</Link>
