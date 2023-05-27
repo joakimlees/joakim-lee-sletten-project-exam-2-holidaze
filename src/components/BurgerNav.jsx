@@ -37,7 +37,7 @@ export function BurgerNav() {
             <Link to={`/profiles/${profileName}`}>Profile</Link>
           </li>
           <li className="my-2">
-            <Link to="/bookings">Bookings</Link>
+            <Link to={`/profiles/${profileName}/bookings`}>Bookings</Link>
           </li>
           <li className="my-2">
             <Link to="/manager">Manager</Link>

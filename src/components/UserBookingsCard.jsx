@@ -9,6 +9,7 @@ export function UserBookingsCard({
       location: { country, city },
       price,
     },
+    id,
     created,
     dateFrom,
     dateTo,
@@ -42,7 +43,9 @@ export function UserBookingsCard({
           </div>
         </dl>
         <div className="flex justify-center mt-6 py-2 bg-dark text-white rounded-lg">
-          <Link className="w-full h-full text-center">Edit booking</Link>
+          <Link to={`/profiles/bookings/${id}`} className="w-full h-full text-center">
+            Edit booking
+          </Link>
         </div>
       </article>
     </li>

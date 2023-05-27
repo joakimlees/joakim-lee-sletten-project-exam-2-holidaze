@@ -10,6 +10,7 @@ import { Login } from "./components/pages/profile/login";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { UserBookings } from "./components/pages/profile/bookings";
+import { EditUserBookings } from "./components/pages/profile/bookings/edit";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="profile/register" element={<Register />} />
           <Route path="profile/login" element={<Login />} />
           <Route path="profiles/:name/bookings" element={<UserBookings />} />
+          <Route path="profiles/bookings/:id" element={<EditUserBookings />} />
         </Route>
       </Routes>
     </div>
