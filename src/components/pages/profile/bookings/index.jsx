@@ -1,15 +1,16 @@
 import { useAuthFetch } from "../../../../api/auth/useAuthFetch";
 import { API_HOLIDAZE_URL } from "../../../../api/constants";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage";
+import { UserBookingsCard } from "../../../UserBookingsCard";
 
 export function UserBookings() {
   const [profile] = useLocalStorage("profile");
 
   const method = "get";
 
-  const { name } = profile;
+  const name = profile.name;
 
-  const url = `${API_HOLIDAZE_URL}/profiles/${name}/bookings`;
+  const url = `${API_HOLIDAZE_URL}/profiles/${name}/bookings?_venue=true`;
 
   const { data, loading, error } = useAuthFetch(url, {
     method,
@@ -34,7 +35,7 @@ export function UserBookings() {
           <h1 className="font-headings font-bold text-xl text-center text-primary my-10">Venues</h1>
           <ul className="flex flex-wrap justify-center gap-5">
             {data.map(booking => (
-              <div key={booking.id}>{booking.id}</div>
+              <UserBookingsCard key={booking.id} venue={booking.venue} />
             ))}
           </ul>
         </div>

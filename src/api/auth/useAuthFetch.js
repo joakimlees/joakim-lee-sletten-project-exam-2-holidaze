@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 export function useAuthFetch(url, options = {}) {
@@ -7,10 +7,20 @@ export function useAuthFetch(url, options = {}) {
   const [error, setError] = useState(false);
   const [token] = useLocalStorage("token");
 
+  /*
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
   };
+  */
+
+  const headers = useMemo(
+    () => ({
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    }),
+    [token]
+  );
 
   useEffect(() => {
     async function fetchWithAuth() {
@@ -43,7 +53,7 @@ export function useAuthFetch(url, options = {}) {
     if (!data) {
       fetchWithAuth();
     }
-  });
+  }, [data, headers, options, url]);
 
   return { data, loading, error };
 }
