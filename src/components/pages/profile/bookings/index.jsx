@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useAuthFetch } from "../../../../api/auth/useAuthFetch";
 import { API_HOLIDAZE_URL } from "../../../../api/constants";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage";
@@ -12,19 +11,13 @@ export function UserBookings() {
 
   const url = `${API_HOLIDAZE_URL}/profiles/${name}/bookings`;
 
-  const { data, loading, error, fetchWithAuth } = useAuthFetch();
+  const { data, loading, error } = useAuthFetch(url, {
+    method,
+  });
 
-  useEffect(() => {
-    async function getBookings() {
-      await fetchWithAuth(url, {
-        method,
-      });
-    }
-
-    if (!data) {
-      getBookings();
-    }
-  }, [url, fetchWithAuth, data]);
+  if (!data) {
+    return <div className="loading-fetch">loading..................</div>;
+  }
 
   if (loading) {
     return <div className="loading-fetch">loading..................</div>;

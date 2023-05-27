@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
-export function useAuthFetch() {
+export function useAuthFetch(url, options = {}) {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -12,32 +12,38 @@ export function useAuthFetch() {
     Authorization: `Bearer ${token}`,
   };
 
-  async function fetchWithAuth(url, options = {}) {
-    try {
-      setLoading(true);
-      setError(false);
-      const response = await fetch(url, {
-        ...options,
-        headers,
-      });
+  useEffect(() => {
+    async function fetchWithAuth() {
+      try {
+        setLoading(true);
+        setError(false);
+        const response = await fetch(url, {
+          ...options,
+          headers,
+        });
 
-      if (!response.ok) {
+        if (!response.ok) {
+          setError(true);
+        }
+
+        const data = await response.json();
+        setError(false);
+
+        setData(data);
+        console.log("Authorized fetch successfully completed");
+      } catch (error) {
         setError(true);
+        console.log("error");
+      } finally {
+        setLoading(false);
+        console.log("finally text");
       }
-
-      const data = await response.json();
-      setError(false);
-
-      setData(data);
-      console.log("booking completed");
-    } catch (error) {
-      setError(true);
-      console.log("error");
-    } finally {
-      setLoading(false);
-      console.log("finally text");
     }
-  }
 
-  return { data, loading, error, fetchWithAuth };
+    if (!data) {
+      fetchWithAuth();
+    }
+  });
+
+  return { data, loading, error };
 }

@@ -1,8 +1,7 @@
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { Link } from "react-router-dom";
-import { useAuthFetch } from "../../../api/auth/useAuthFetch";
 import { API_HOLIDAZE_URL } from "../../../api/constants";
-import { useEffect } from "react";
+import { useAuthFetch } from "../../../api/auth/useAuthFetch";
 
 export function Profile() {
   const [profile] = useLocalStorage("profile");
@@ -13,19 +12,9 @@ export function Profile() {
 
   const url = `${API_HOLIDAZE_URL}/profiles/${name}`;
 
-  const { data, loading, error, fetchWithAuth } = useAuthFetch();
-
-  useEffect(() => {
-    async function getBookings() {
-      await fetchWithAuth(url, {
-        method,
-      });
-    }
-
-    if (!data) {
-      getBookings();
-    }
-  }, [url, fetchWithAuth, data]);
+  const { data, loading, error } = useAuthFetch(url, {
+    method,
+  });
 
   if (loading) {
     return <div className="loading-fetch">loading..................</div>;
