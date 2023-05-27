@@ -16,7 +16,7 @@ export function VenueCard({
 }) {
   return (
     <li className="flex flex-col justify-between bg-light shadow-lg py-4 px-4 rounded-lg max-w-xs">
-      <div className="w-full w-full h-80 border-dark border-2">
+      <div className="w-full h-80 border-dark border-2">
         <img src={media[0]} alt="" className="h-full w-full object-cover" />
       </div>
       <article className="font-paragraph text-sm">
