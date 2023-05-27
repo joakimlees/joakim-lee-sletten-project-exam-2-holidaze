@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { formatDate } from "../../utils/formatDate";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { API_HOLIDAZE_URL } from "../../api/constants";
-import { useAuthFetch } from "../../api/auth/useAuthFetch";
+import { useAuthPost } from "../../api/auth/useAuthPost";
 
 export function BookingCalendar({ bookings, venueId, maxGuests, price }) {
   const [dateFrom, setDateFrom] = useState();
@@ -65,14 +65,13 @@ export function BookingCalendar({ bookings, venueId, maxGuests, price }) {
     "venueId": venueId,
   };
 
-  const method = "post";
-
-  const { data, loading, error, fetchWithAuth } = useAuthFetch();
+  const { data, loading, error, postWithAuth } = useAuthPost();
 
   const handleCompleteBooking = async () => {
     const url = API_HOLIDAZE_URL + "/bookings";
+    const method = "post";
 
-    await fetchWithAuth(url, {
+    await postWithAuth(url, {
       method,
       body: JSON.stringify(bookingData),
     });
