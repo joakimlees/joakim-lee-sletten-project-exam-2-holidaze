@@ -21,8 +21,10 @@ export function UserBookings() {
       });
     }
 
-    getBookings();
-  }, [url, fetchWithAuth]);
+    if (!data) {
+      getBookings();
+    }
+  }, [url, fetchWithAuth, data]);
 
   if (loading) {
     return <div className="loading-fetch">loading..................</div>;
