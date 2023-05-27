@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 export function useAuthFetch() {
@@ -22,7 +22,6 @@ export function useAuthFetch() {
       });
 
       if (!response.ok) {
-        const result = await response.json();
         setError(true);
       }
 

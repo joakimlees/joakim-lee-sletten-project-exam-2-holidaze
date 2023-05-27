@@ -16,9 +16,13 @@ export function UserBookings() {
 
   useEffect(() => {
     async function getBookings() {
-      await fetchWithAuth(url, {
-        method,
-      });
+      await fetchWithAuth(
+        url,
+        {
+          method,
+        },
+        [url]
+      );
     }
 
     getBookings();

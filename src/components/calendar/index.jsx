@@ -6,7 +6,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { API_HOLIDAZE_URL } from "../../api/constants";
 import { useAuthFetch } from "../../api/auth/useAuthFetch";
 
-export function BookingCalendar({ bookings, venueId, venueName, maxGuests, price }) {
+export function BookingCalendar({ bookings, venueId, maxGuests, price }) {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
   const [guestValue, setGuestValue] = useState(0);
@@ -47,7 +47,6 @@ export function BookingCalendar({ bookings, venueId, venueName, maxGuests, price
 
   const activeBookingCTA = "font-buttons text-base max-w-xl text-center text-light bg-primary rounded-lg py-4 w-full mx-auto";
   const inActiveBookingCTA = "font-buttons text-base max-w-xl text-center text-light bg-primary rounded-lg py-4 w-full mx-auto opacity-50";
-  const completeBookingUrl = "/booking/success";
 
   useEffect(() => {
     function activateCTA() {

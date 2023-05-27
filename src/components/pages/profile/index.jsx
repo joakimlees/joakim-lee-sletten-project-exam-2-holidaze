@@ -17,13 +17,21 @@ export function Profile() {
 
   useEffect(() => {
     async function getBookings() {
-      await fetchWithAuth(url, {
-        method,
-      });
+      await fetchWithAuth(
+        url,
+        {
+          method,
+        },
+        [url]
+      );
     }
 
     getBookings();
   }, [url]);
+
+  if (loading) {
+    return <div className="loading-fetch">loading..................</div>;
+  }
 
   if (!data) {
     return <div className="loading-fetch">loading..................</div>;
@@ -41,7 +49,7 @@ export function Profile() {
           <article className="bg-light mx-auto max-w-2xl py-10 px-10 rounded-lg">
             <h1 className="font-headings font-bold text-xl text-center text-primary my-10">{username}</h1>
             <div className="w-80 h-80 border-dark border-2 mx-auto">
-              <img src={avatar} alt={`profile image to ${username}`} className="h-full w-full object-cover" />
+              <img src={avatar} alt={username} className="h-full w-full object-cover" />
             </div>
             <div className="mx-auto text-center">
               <Link>Edit avatar</Link>
