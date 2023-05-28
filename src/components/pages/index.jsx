@@ -21,7 +21,7 @@ export function Home() {
     <main className="grow">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-5">
         <h1 className="font-headings font-bold text-xl text-center text-primary my-10">Home page</h1>
-        <form className="bg-light rounded-lg py-5 px-5">
+        <form className="bg-light rounded-lg py-5 px-5 max-w-xl mx-auto mb-10 ">
           <fieldset className="flex flex-col text-center">
             <label className="rounded-lg font-headings font-semibold" htmlFor="search">
               Search for Venue
