@@ -16,6 +16,7 @@ import { CreateVenue } from "./components/pages/profile/manager/create";
 import { EditVenue } from "./components/pages/profile/manager/edit";
 import { About } from "./components/pages/about";
 import { Contact } from "./components/pages/contact";
+import { EditProfile } from "./components/pages/profile/edit";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="venues/:id" element={<Venue />} />
           <Route path="booking/:id" element={<Booking />} />
           <Route path="profiles/:name" element={<Profile />} />
+          <Route path="profiles/edit" element={<EditProfile />} />
           <Route path="profile/register" element={<Register />} />
           <Route path="profile/login" element={<Login />} />
           <Route path="profiles/:name/bookings" element={<UserBookings />} />

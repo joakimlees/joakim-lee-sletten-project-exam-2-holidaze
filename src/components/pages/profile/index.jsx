@@ -39,7 +39,9 @@ export function Profile() {
               <img src={avatar} alt={username} className="h-full w-full object-cover" />
             </div>
             <div className="mx-auto text-center flex my-5">
-              <Link className="text-center text-light bg-dark rounded-lg py-2 w-full">Edit avatar</Link>
+              <Link to="/profiles/edit" className="text-center text-light bg-dark rounded-lg py-2 w-full">
+                Edit avatar
+              </Link>
             </div>
             <dl className="flex justify-between">
               <div>

@@ -29,8 +29,6 @@ export function EditVenue() {
     const url = API_HOLIDAZE_URL + path + "/" + id;
     const body = JSON.stringify(data);
 
-    console.log(method);
-
     await postWithAuth(url, {
       method,
       body,
