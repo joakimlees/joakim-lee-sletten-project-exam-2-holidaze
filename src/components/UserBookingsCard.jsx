@@ -1,9 +1,12 @@
 import { formatDate } from "../utils/formatDate";
 import { Link } from "react-router-dom";
+import { useAuthPost } from "../api/auth/useAuthPost";
+import { API_HOLIDAZE_URL } from "../api/constants";
+import { useState } from "react";
 
 export function UserBookingsCard({
   booking: {
-    venue: { name, media, price },
+    venue: { name, media },
     id,
     created,
     dateFrom,
@@ -11,10 +14,28 @@ export function UserBookingsCard({
     updated,
   },
 }) {
+  const [removeText, setRemoveText] = useState();
   const fromDate = formatDate(dateFrom);
   const toDate = formatDate(dateTo);
   const createdDate = formatDate(created);
   const updatedDate = formatDate(updated);
+
+  const { loading, postWithAuth } = useAuthPost();
+
+  const handleDeleteBooking = async () => {
+    const url = API_HOLIDAZE_URL + "/bookings/" + id;
+    const method = "delete";
+
+    if (loading) {
+      setRemoveText("Loading...");
+    }
+
+    setRemoveText("Your booking was deleted. Refresh to see updated bookings");
+
+    await postWithAuth(url, {
+      method,
+    });
+  };
 
   return (
     <li className="flex-col bg-light w-80 py-4 px-4 rounded-lg gap-5 sm:flex sm:flex-row sm:w-full sm:max-w-full">
@@ -43,8 +64,11 @@ export function UserBookingsCard({
           </Link>
         </div>
         <div className="flex justify-center mt-6 py-2 bg-secondary text-white rounded-lg">
-          <button className="w-full h-full text-center">Delete Booking</button>
+          <button className="w-full h-full text-center" onClick={handleDeleteBooking}>
+            Delete Booking
+          </button>
         </div>
+        <div className="font-headings text-center text-base text-dark mb-2 mt-8">{removeText}</div>
       </article>
     </li>
   );
