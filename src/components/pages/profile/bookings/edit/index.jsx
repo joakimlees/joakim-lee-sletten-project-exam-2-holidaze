@@ -7,8 +7,12 @@ import { useFetch } from "../../../../../api/hooks/useFetch";
 
 export function EditUserBookings() {
   const { id } = useParams();
-  const putUrl = `${API_HOLIDAZE_URL}/bookings/${id}`;
-  const getUrl = putUrl + "?_venue=true";
+  const putPath = `/bookings/${id}`;
+  const getUrl = API_HOLIDAZE_URL + putPath + "?_venue=true";
+
+  const calendarTitle = "Calendar with available booking dates. Choose dates to book and edit your booking.";
+
+  const textCTA = "Edit booking";
 
   const [bookingData, setBookingData] = useState({});
 
@@ -32,7 +36,7 @@ export function EditUserBookings() {
 
   const { data: venueData, loading: venueLoading, error: venueError } = useFetch(getVenueUrl);
 
-  const { bookings } = venueData;
+  const { name, price, maxGuests, location, bookings } = venueData;
 
   if (bookingLoading || venueLoading) {
     return <div className="loading-fetch">loading..................</div>;
@@ -46,7 +50,7 @@ export function EditUserBookings() {
     <main className="grow">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-5">
         <h1 className="text-center mt-20 font-headings text-2xl text-dark">Edit booking</h1>
-        <BookingCalendar bookings={bookings} />
+        <BookingCalendar calendarTitle={calendarTitle} bookings={bookings} textCTA={textCTA} fetchMethod={"put"} fetchPath={putPath} venueLocation={location} maxGuests={maxGuests} price={price} venueName={name} />
       </div>
     </main>
   );
