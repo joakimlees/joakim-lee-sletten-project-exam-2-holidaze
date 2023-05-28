@@ -3,14 +3,35 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useEffect, useState } from "react";
 
 export function BurgerNav() {
-  const [profile] = useLocalStorage("profile");
+  const [profile, setProfile, removeProfile] = useLocalStorage("profile");
   const [profileName, setProfileName] = useState("");
+  const [token, setToken, removeToken] = useLocalStorage("token");
+  const [userLoginText, setUserLoginText] = useState("Login");
+
+  useEffect(() => {
+    if (token) {
+      setUserLoginText("Logout");
+    } else if (!token) {
+      setUserLoginText("Login");
+    }
+  }, [token, profile]);
 
   useEffect(() => {
     if (profile) {
       setProfileName(profile.name);
     }
   }, [profile]);
+
+  function handleUserLoginNav() {
+    if (token) {
+      removeToken();
+      removeProfile();
+      setUserLoginText("Login");
+    } else if (!token) {
+      setToken("");
+      setProfile("");
+    }
+  }
 
   return (
     <nav>
@@ -46,7 +67,9 @@ export function BurgerNav() {
 
         <div className="text-center md:hidden">
           <li className="my-2">
-            <Link to="/profile/login">Login</Link>
+            <Link to="/profile/login" onClick={handleUserLoginNav}>
+              {userLoginText}
+            </Link>
           </li>
           <li className="bg-secondary px-10 py-1 rounded-lg my-2">
             <Link to="/profile/register">Register</Link>
