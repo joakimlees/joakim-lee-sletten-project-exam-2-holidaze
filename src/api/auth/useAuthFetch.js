@@ -36,10 +36,10 @@ export function useAuthFetch(url, options = {}) {
           setError(true);
         }
 
-        const data = await response.json();
+        const result = await response.json();
         setError(false);
 
-        setData(data);
+        setData(result);
         console.log("Authorized fetch successfully completed");
       } catch (error) {
         setError(true);

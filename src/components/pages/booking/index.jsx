@@ -7,8 +7,13 @@ export function Booking() {
   const { id } = useParams();
   const url = `${API_HOLIDAZE_VENUE_URL}/${id}${BOOKINGS_OWNER}`;
   const { data, loading, error } = useFetch(url);
+  const fetchPath = "/bookings";
 
   const { name, price, maxGuests, location, bookings } = data || {};
+
+  const calendarTitle = "Calendar with available booking dates. Choose dates to book your stay.";
+
+  const textCTA = "Complete booking";
 
   if (loading) {
     return <div className="loading-fetch">loading..................</div>;
@@ -25,7 +30,7 @@ export function Booking() {
         <div className="my-14 font-buttons text-primary max-w-4xl mx-auto">
           <Link to={`/venues/${id}`}>&lt; &lt; Back to Venue</Link>
         </div>
-        <BookingCalendar bookings={bookings} venueLocation={location} venueId={id} maxGuests={maxGuests} price={price} venueName={name} />
+        <BookingCalendar calendarTitle={calendarTitle} bookings={bookings} venueLocation={location} venueId={id} maxGuests={maxGuests} price={price} venueName={name} fetchMethod={"post"} fetchPath={fetchPath} textCTA={textCTA} />
       </div>
     </main>
   );
