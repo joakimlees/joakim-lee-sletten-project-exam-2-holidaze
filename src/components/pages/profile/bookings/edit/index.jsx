@@ -36,7 +36,7 @@ export function EditUserBookings() {
 
   const { data: venueData, loading: venueLoading, error: venueError } = useFetch(getVenueUrl);
 
-  const { name, price, maxGuests, location, bookings } = venueData;
+  const { name, price, maxGuests, location, bookings } = venueData || {};
 
   if (bookingLoading || venueLoading) {
     return <div className="loading-fetch">loading..................</div>;

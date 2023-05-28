@@ -12,7 +12,6 @@ export function BookingCalendar({ calendarTitle, bookings, venueId, maxGuests, p
   const [guestValue, setGuestValue] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
-  console.log(guestValue);
   const handleDateClick = date => {
     calendar.handleDateClick(date, isDateBooked, bookings, dateFrom, dateTo, setDateFrom, setDateTo);
   };

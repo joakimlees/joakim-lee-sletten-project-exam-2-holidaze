@@ -7,13 +7,6 @@ export function useAuthFetch(url, options = {}) {
   const [error, setError] = useState(false);
   const [token] = useLocalStorage("token");
 
-  /*
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  };
-  */
-
   const headers = useMemo(
     () => ({
       "Content-Type": "application/json",
@@ -46,7 +39,7 @@ export function useAuthFetch(url, options = {}) {
         console.log("error");
       } finally {
         setLoading(false);
-        console.log("finally text");
+        console.log("fetch request completed");
       }
     }
 

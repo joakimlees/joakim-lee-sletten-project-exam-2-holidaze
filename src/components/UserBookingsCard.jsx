@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 
 export function UserBookingsCard({
   booking: {
-    venue: {
-      name,
-      media,
-      location: { country, city },
-      price,
-    },
+    venue: { name, media, price },
     id,
     created,
     dateFrom,
@@ -22,8 +17,8 @@ export function UserBookingsCard({
   const updatedDate = formatDate(updated);
 
   return (
-    <li className="flex-col bg-light py-4 px-4 rounded-lg gap-5 sm:flex sm:flex-row sm:w-full">
-      <div className="h-52 sm:h-full w-52 border-dark border-2 rounded-lg">
+    <li className="flex-col bg-light w-80 py-4 px-4 rounded-lg gap-5 sm:flex sm:flex-row sm:w-full sm:max-w-full">
+      <div className="h-52 sm:h-full w-full sm:w-52 border-dark border-2 rounded-lg mx-auto">
         <img src={media[0]} alt={name} className="h-full w-full object-cover rounded-lg" />
       </div>
       <article className="w-full grow">
@@ -46,6 +41,9 @@ export function UserBookingsCard({
           <Link to={`/profiles/bookings/${id}`} className="w-full h-full text-center">
             Edit booking
           </Link>
+        </div>
+        <div className="flex justify-center mt-6 py-2 bg-secondary text-white rounded-lg">
+          <button className="w-full h-full text-center">Delete Booking</button>
         </div>
       </article>
     </li>
