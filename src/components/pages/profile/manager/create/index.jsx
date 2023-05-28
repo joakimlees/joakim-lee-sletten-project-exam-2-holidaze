@@ -5,8 +5,10 @@ import { API_HOLIDAZE_URL } from "../../../../../api/constants";
 import { createVenueSchema } from "../../../../form/schema/createVenueSchema";
 import { ButtonPrimary } from "../../../../ui/actions/buttons/ButtonPrimary";
 import { useAuthPost } from "../../../../../api/auth/useAuthPost";
+import { useEffect, useState } from "react";
 
 export function CreateVenue() {
+  const [isVenueCreated, setIsVenueCreated] = useState(false);
   const {
     handleSubmit,
     register,
@@ -15,7 +17,7 @@ export function CreateVenue() {
     resolver: yupResolver(createVenueSchema),
   });
 
-  // const { data, loading, error, postWithAuth } = useAuthPost();
+  const { data, loading, error, postWithAuth } = useAuthPost();
 
   async function onSubmit(data, event) {
     const form = event.target;
@@ -25,15 +27,17 @@ export function CreateVenue() {
     const url = API_HOLIDAZE_URL + path;
     const body = JSON.stringify(data);
 
-    console.log(data);
-
-    /*
     await postWithAuth(url, {
       method,
       body,
     });
-    */
   }
+
+  useEffect(() => {
+    if (data && !error) {
+      setIsVenueCreated(true);
+    }
+  }, [data, error]);
 
   return (
     <main className="grow">
@@ -69,6 +73,9 @@ export function CreateVenue() {
 
             <FormField register={register} errorText={errors.pets?.message} labelText="pets" htmlFor="breakfast" name="meta.pets" type="checkbox" required={false} />
           </div>
+          {error ? <div className="block text-center text-secondary">Unable to create you venue</div> : <div></div>}
+          {loading ? <div className="block text-center text-dark">Creating venue...</div> : <div></div>}
+          {isVenueCreated ? <div className="block text-center text-primary">Your venue was created. view your venues in the venue Manager</div> : <div></div>}
           <ButtonPrimary type="submit" innerContent="Create venue" />
         </form>
       </div>
