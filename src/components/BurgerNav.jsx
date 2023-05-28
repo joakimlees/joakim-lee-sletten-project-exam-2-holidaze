@@ -61,10 +61,9 @@ export function BurgerNav() {
             <Link to={`/profiles/${profileName}/bookings`}>Bookings</Link>
           </li>
           <li className="my-2">
-            <Link to="/manager">Manager</Link>
+            <Link to="/profiles/manager">Manager</Link>
           </li>
         </div>
-
         <div className="text-center md:hidden">
           <li className="my-2">
             <Link to="/profile/login" onClick={handleUserLoginNav}>

@@ -11,6 +11,8 @@ import { Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { UserBookings } from "./components/pages/profile/bookings";
 import { EditUserBookings } from "./components/pages/profile/bookings/edit";
+import { ManagerVenues } from "./components/pages/profile/manager";
+import { CreateVenue } from "./components/pages/profile/manager/create";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="profile/login" element={<Login />} />
           <Route path="profiles/:name/bookings" element={<UserBookings />} />
           <Route path="profiles/bookings/:id" element={<EditUserBookings />} />
+          <Route path="profiles/manager" element={<ManagerVenues />} />
+          <Route path="profiles/manager/create-venue" element={<CreateVenue />} />
         </Route>
       </Routes>
     </div>
