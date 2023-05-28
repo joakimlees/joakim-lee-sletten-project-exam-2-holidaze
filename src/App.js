@@ -14,6 +14,8 @@ import { EditUserBookings } from "./components/pages/profile/bookings/edit";
 import { ManagerVenues } from "./components/pages/profile/manager";
 import { CreateVenue } from "./components/pages/profile/manager/create";
 import { EditVenue } from "./components/pages/profile/manager/edit";
+import { About } from "./components/pages/about";
+import { Contact } from "./components/pages/contact";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path="profiles/manager" element={<ManagerVenues />} />
           <Route path="profiles/manager/create-venue" element={<CreateVenue />} />
           <Route path="profiles/manager/:id" element={<EditVenue />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="about" element={<About />} />
         </Route>
       </Routes>
     </div>
