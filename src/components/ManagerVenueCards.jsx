@@ -42,7 +42,9 @@ export function ManagerVenueCard({ venue: { name, id, created, updated, media } 
           </div>
         </dl>
         <div className="flex justify-center mt-6 py-2 bg-dark text-white rounded-lg">
-          <Link className="w-full h-full text-center">Edit booking</Link>
+          <Link to={`/profiles/manager/${id}`} className="w-full h-full text-center">
+            Update booking
+          </Link>
         </div>
         <div className="flex justify-center mt-6 py-2 bg-secondary text-white rounded-lg">
           <button className="w-full h-full text-center" onClick={handleDeleteVenue}>

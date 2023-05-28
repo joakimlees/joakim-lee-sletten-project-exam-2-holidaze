@@ -13,6 +13,7 @@ import { UserBookings } from "./components/pages/profile/bookings";
 import { EditUserBookings } from "./components/pages/profile/bookings/edit";
 import { ManagerVenues } from "./components/pages/profile/manager";
 import { CreateVenue } from "./components/pages/profile/manager/create";
+import { EditVenue } from "./components/pages/profile/manager/edit";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="profiles/bookings/:id" element={<EditUserBookings />} />
           <Route path="profiles/manager" element={<ManagerVenues />} />
           <Route path="profiles/manager/create-venue" element={<CreateVenue />} />
+          <Route path="profiles/manager/:id" element={<EditVenue />} />
         </Route>
       </Routes>
     </div>
