@@ -25,7 +25,7 @@ export function BurgerNav() {
       setProfileLink("/profile/login");
       setBookingsLink("/profiles/login");
     }
-  }, [profile.name, profileName]);
+  }, [profileName, profile.name]);
 
   useEffect(() => {
     if (profile.venueManager) {
@@ -33,7 +33,7 @@ export function BurgerNav() {
     } else if (!profile.venueManager) {
       setManagerLink(`/profiles/${profileName}`);
     }
-  }, [profile.venueManager, profileName]);
+  }, [profileName, profile.venueManager]);
 
   useEffect(() => {
     if (token) {
