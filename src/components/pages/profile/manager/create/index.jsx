@@ -17,11 +17,6 @@ export function CreateVenue() {
 
   // const { data, loading, error, postWithAuth } = useAuthPost();
 
-  function onSubmit(data, event) {
-    console.log(data, event);
-  }
-
-  /*
   async function onSubmit(data, event) {
     const form = event.target;
     const action = new URL(form.action);
@@ -30,24 +25,16 @@ export function CreateVenue() {
     const url = API_HOLIDAZE_URL + path;
     const body = JSON.stringify(data);
 
+    console.log(data);
+
+    /*
     await postWithAuth(url, {
       method,
       body,
     });
+    */
   }
 
-  if (loading) {
-    console.log("loading");
-  }
-
-  if (error) {
-    console.log("error");
-  }
-
-  if (data) {
-    console.log("data");
-  }
-*/
   return (
     <main className="grow">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-5">
@@ -60,28 +47,28 @@ export function CreateVenue() {
           <FormField register={register} labelText="Media image (URL)" htmlFor="media" name="media" type="url" placeholder="enter a image url" required={false} errorText={errors.media?.message} />
 
           <FormField register={register} labelText="Price" htmlFor="price" name="price" type="number" placeholder="example: 199" required={true} errorText={errors.price?.message} />
-          {/*
+
           <FormField register={register} labelText="Guest limit" htmlFor="maxGuests" name="maxGuests" type="number" placeholder="example: 4" required={true} errorText={errors.maxGuests?.message} />
 
-          <FormField register={register} labelText="Address" htmlFor="address" name="address" type="text" placeholder="venue street" required={true} errorText={errors.address?.message} />
+          <FormField register={register} labelText="Address" htmlFor="address" name="location.address" type="text" placeholder="venue street" required={true} errorText={errors.address?.message} />
 
-          <FormField register={register} labelText="City" htmlFor="city" name="city" type="text" placeholder="Oslo" required={false} errorText={errors.city?.message} />
+          <FormField register={register} labelText="City" htmlFor="city" name="location.city" type="text" placeholder="Oslo" required={false} errorText={errors.city?.message} />
 
-          <FormField register={register} labelText="Zip" htmlFor="zip" name="zip" type="text" placeholder="zip" required={false} errorText={errors.zip?.message} />
+          <FormField register={register} labelText="Zip" htmlFor="zip" name="location.zip" type="text" placeholder="zip" required={false} errorText={errors.zip?.message} />
 
-          <FormField register={register} labelText="Country" htmlFor="country" name="country" type="text" placeholder="Norway" required={true} errorText={errors.country?.message} />
+          <FormField register={register} labelText="Country" htmlFor="country" name="location.country" type="text" placeholder="Norway" required={true} errorText={errors.country?.message} />
 
-          <FormField register={register} labelText="Continent" htmlFor="continent" name="continent" type="text" placeholder="Europe" required={true} errorText={errors.continent?.message} />
-          
+          <FormField register={register} labelText="Continent" htmlFor="continent" name="location.continent" type="text" placeholder="Europe" required={false} errorText={errors.continent?.message} />
+
           <div className="flex justify-between mb-8">
-            <FormField register={register} errorText={errors.wifi?.message} labelText="wifi" htmlFor="wifi" name="wifi" value={false} type="checkbox" required={false} />
+            <FormField register={register} errorText={errors.wifi?.message} labelText="wifi" htmlFor="wifi" name="meta.wifi" type="checkbox" required={false} />
 
-            <FormField register={register} errorText={errors.parking?.message} labelText="parking" htmlFor="parking" name="parking" value={false} type="checkbox" required={false} />
+            <FormField register={register} errorText={errors.parking?.message} labelText="parking" htmlFor="parking" name="meta.parking" type="checkbox" required={false} />
 
-            <FormField register={register} errorText={errors.breakfast?.message} labelText="breakfast" htmlFor="breakfast" name="breakfast" value={false} type="checkbox" required={false} />
+            <FormField register={register} errorText={errors.breakfast?.message} labelText="breakfast" htmlFor="breakfast" name="meta.breakfast" type="checkbox" required={false} />
 
-            <FormField register={register} errorText={errors.pets?.message} labelText="pets" htmlFor="breakfast" name="pets" value={false} type="checkbox" required={false} />
-          </div> */}
+            <FormField register={register} errorText={errors.pets?.message} labelText="pets" htmlFor="breakfast" name="meta.pets" type="checkbox" required={false} />
+          </div>
           <ButtonPrimary type="submit" innerContent="Create venue" />
         </form>
       </div>

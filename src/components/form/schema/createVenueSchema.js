@@ -14,19 +14,19 @@ export const createVenueSchema = yup
         return value;
       }),
     price: yup.number().required("Please provide a price for your venue"),
-    /* maxGuests: yup.number().required("Please provide a guest limit for your venue"),
+    maxGuests: yup.number().required("Please provide a guest limit for your venue"),
+    location: yup.object().shape({
+      address: yup.string().required("Please enter the address for your venue (required)"),
+      city: yup.string(),
+      zip: yup.string(),
+      country: yup.string().required("Please enter the country for your venue (required)"),
+      continent: yup.string(),
+    }),
     meta: yup.object().shape({
       wifi: yup.boolean(),
       parking: yup.boolean(),
       breakfast: yup.boolean(),
       pets: yup.boolean(),
     }),
-    location: yup.object().shape({
-      address: yup.string().required("Please enter the address to your venue"),
-      city: yup.string(),
-      zip: yup.string(),
-      country: yup.string().required("In what country are your venue located?"),
-      continent: yup.string(),
-    }),*/
   })
   .required();
