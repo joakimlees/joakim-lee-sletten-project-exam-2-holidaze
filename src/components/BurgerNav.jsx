@@ -7,6 +7,33 @@ export function BurgerNav() {
   const [profileName, setProfileName] = useState("");
   const [token, setToken, removeToken] = useLocalStorage("token");
   const [userLoginText, setUserLoginText] = useState("Login");
+  const [profileLink, setProfileLink] = useState("");
+  const [managerLink, setManagerLink] = useState("");
+  const [bookingsLink, setBookingsLink] = useState("");
+
+  useEffect(() => {
+    if (profile) {
+      setProfileName(profile.name);
+    }
+  }, [profile]);
+
+  useEffect(() => {
+    if (profile.name) {
+      setProfileLink(`/profiles/${profileName}`);
+      setBookingsLink(`/profiles/${profileName}/bookings`);
+    } else if (!profile.name) {
+      setProfileLink("/profile/login");
+      setBookingsLink("/profiles/login");
+    }
+  }, [profile.name, profileName]);
+
+  useEffect(() => {
+    if (profile.venueManager) {
+      setManagerLink("/profiles/manager");
+    } else if (!profile.venueManager) {
+      setManagerLink(`/profiles/${profileName}`);
+    }
+  }, [profile.venueManager, profileName]);
 
   useEffect(() => {
     if (token) {
@@ -15,12 +42,6 @@ export function BurgerNav() {
       setUserLoginText("Login");
     }
   }, [token, profile]);
-
-  useEffect(() => {
-    if (profile) {
-      setProfileName(profile.name);
-    }
-  }, [profile]);
 
   function handleUserLoginNav() {
     if (token) {
@@ -55,13 +76,13 @@ export function BurgerNav() {
         </div>
         <div className="mb-10 border-b-2 pb-4">
           <li className="my-2">
-            <Link to={`/profiles/${profileName}`}>Profile</Link>
+            <Link to={profileLink}>Profile</Link>
           </li>
           <li className="my-2">
-            <Link to={`/profiles/${profileName}/bookings`}>Bookings</Link>
+            <Link to={bookingsLink}>Bookings</Link>
           </li>
           <li className="my-2">
-            <Link to="/profiles/manager">Manager</Link>
+            <Link to={managerLink}>Manager</Link>
           </li>
         </div>
         <div className="text-center md:hidden">
