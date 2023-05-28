@@ -38,8 +38,8 @@ export function Profile() {
             <div className="w-80 h-80 border-dark border-2 mx-auto">
               <img src={avatar} alt={username} className="h-full w-full object-cover" />
             </div>
-            <div className="mx-auto text-center">
-              <Link>Edit avatar</Link>
+            <div className="mx-auto text-center flex my-5">
+              <Link className="text-center text-light bg-dark rounded-lg py-2 w-full">Edit avatar</Link>
             </div>
             <dl className="flex justify-between">
               <div>
@@ -51,8 +51,10 @@ export function Profile() {
                 {venueManager ? <div>Manager</div> : <div>Customer</div>}
               </div>
             </dl>
-            <div className="bg-secondary">
-              <Link to={`/profiles/${name}/bookings`}>Your bookings</Link>
+            <div className="flex mt-10">
+              <Link className="text-center text-light bg-dark rounded-lg py-2 w-full" to={`/profiles/${name}/bookings`}>
+                Your bookings
+              </Link>
             </div>
           </article>
         </div>
