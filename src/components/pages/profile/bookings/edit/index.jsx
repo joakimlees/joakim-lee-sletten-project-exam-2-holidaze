@@ -15,6 +15,7 @@ export function EditUserBookings() {
   const textCTA = "Edit booking";
 
   const [bookingData, setBookingData] = useState({});
+  const [venueData, setVenueData] = useState({});
 
   const {
     data: bookingDataResponse,
@@ -34,7 +35,13 @@ export function EditUserBookings() {
   const { id: venueId } = venue || {};
   const getVenueUrl = API_HOLIDAZE_VENUE_URL + "/" + venueId + BOOKINGS_OWNER;
 
-  const { data: venueData, loading: venueLoading, error: venueError } = useFetch(getVenueUrl);
+  const { data: venueDataResponse, loading: venueLoading, error: venueError } = useFetch(getVenueUrl);
+
+  useEffect(() => {
+    if (!venueLoading && !venueError && venueDataResponse && venueDataResponse !== undefined && venueDataResponse !== null) {
+      setVenueData(venueDataResponse);
+    }
+  }, [venueDataResponse, venueLoading, venueError]);
 
   const { name, price, maxGuests, location, bookings } = venueData || {};
 
