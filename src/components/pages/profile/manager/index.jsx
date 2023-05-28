@@ -17,8 +17,6 @@ export function ManagerVenues() {
     method,
   });
 
-  console.log(data);
-
   if (!data) {
     return <div className="loading-fetch">loading..................</div>;
   }

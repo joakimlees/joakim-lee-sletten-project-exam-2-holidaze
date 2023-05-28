@@ -29,13 +29,13 @@ export function useAuthPost() {
       setError(false);
 
       setData(data);
-      console.log("Authorized POST successfully completed");
+      console.log("Authorized fetch successfully completed");
     } catch (error) {
       setError(true);
       console.log("error");
     } finally {
       setLoading(false);
-      console.log("finally text POST");
+      console.log("fetch completed");
     }
   }
 

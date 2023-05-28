@@ -23,6 +23,9 @@ export function Login() {
     resolver: yupResolver(loginSchema),
   });
 
+  console.log(token);
+  console.log(storedProfile);
+
   async function onSubmit(data, event) {
     const form = event.target;
     const action = new URL(form.action);
@@ -49,9 +52,6 @@ export function Login() {
 
       setToken(accessToken);
       setStoredProfile(profileDetails);
-      console.log(token);
-      console.log(storedProfile);
-
       setProfile(profile);
       setError(false);
       setDidUserLogin(true);

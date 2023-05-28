@@ -6,5 +6,3 @@ export const VENUES = "/venues";
 export const BOOKINGS_OWNER = "?_owner=true&_bookings=true";
 export const API_HOLIDAZE_VENUES_URL = `${API_HOLIDAZE_URL}${VENUES}${BOOKINGS_OWNER}`;
 export const API_HOLIDAZE_VENUE_URL = `${API_HOLIDAZE_URL}${VENUES}`;
-
-//export const AUTH_REGISTER = "/auth/register";

@@ -4,14 +4,11 @@ export function VenueCard({
   venue: {
     name: venueName,
     id,
-    created,
-    description,
     media,
     price,
     maxGuests,
-    location: { address, continent, country, city, zip },
+    location: { country },
     owner: { name: ownerName, email },
-    bookings: { dateFrom, dateTo },
   },
 }) {
   return (
