@@ -74,10 +74,30 @@ There are two aspects to this brief: the customer-facing side of the website whe
 
 ## Getting started
 
+### Clone the repository
+
 Clone this repository by pasting this code in your terminal:
 
 ```
 git clone https://github.com/joakimlees/joakim-lee-sletten-project-exam-2-holidaze.git
+```
+
+### Install dependencies
+
+```
+npm install react-router-dom
+```
+
+```
+npm install react-hook-form
+```
+
+```
+npm i react-calendar
+```
+
+```
+npm install -D tailwindcss
 ```
 
 ## Contributing
