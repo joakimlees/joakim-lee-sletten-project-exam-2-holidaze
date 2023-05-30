@@ -100,6 +100,12 @@ npm i react-calendar
 npm install -D tailwindcss
 ```
 
+### Run the project
+
+```
+npm start
+```
+
 ## Contributing
 
 For any contributions, make sure to open a pull request so that code can be reviewed.
