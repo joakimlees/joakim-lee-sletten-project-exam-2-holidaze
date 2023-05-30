@@ -13,64 +13,64 @@ There are two aspects to this brief: the customer-facing side of the website whe
 
 ## User Stories - requirements
 
-A user may view a list of Venues
-A user may search for a specific Venue
-A user may view a specific Venue page by id
-A user may view a calendar with available dates for a Venue
-A user with a stud.noroff.no email may register as a customer
-A registered customer may create a booking at a Venue
-A registered customer may view their upcoming bookings
-A user with a stud.noroff.no email may register as a Venue manager
-A registered Venue manager may create a Venue
-A registered Venue manager may update a Venue they manage
-A registered Venue manager may delete a Venue they manage
-A registered Venue manager may view bookings for a Venue they manage
-A registered user may login
-A registered user may update their avatar
-A registered user may logout
+- A user may view a list of Venues
+- A user may search for a specific Venue
+- A user may view a specific Venue page by id
+- A user may view a calendar with available dates for a Venue
+- A user with a stud.noroff.no email may register as a customer
+- A registered customer may create a booking at a Venue
+- A registered customer may view their upcoming bookings
+- A user with a stud.noroff.no email may register as a Venue manager
+- A registered Venue manager may create a Venue
+- A registered Venue manager may update a Venue they manage
+- A registered Venue manager may delete a Venue they manage
+- A registered Venue manager may view bookings for a Venue they manage
+- A registered user may login
+- A registered user may update their avatar
+- A registered user may logout
 
 ## Technical Restrictions
 
 ### Must use an approved JavaScript Framework
 
-React (>16)
+- React (>16)
 
 ### Must use an approved CSS Framework
 
-Bootstrap (>5)
-Tailwind (>3)
-MUI (>5)
-Styled Components
-CSS Modules
+- Bootstrap (>5)
+- Tailwind (>3)
+- MUI (>5)
+- Styled Components
+- CSS Modules
 
 ### Must be hosted on an approved Static Host
 
-GitHub Pages
-Netlify
+- GitHub Pages
+- Netlify
 
 ### Must use an approved Design Application
 
-Adobe XD
-Figma
-Sketch
+- Adobe XD
+- Figma
+- Sketch
 
 ### Must use an approved Planning Application
 
-Trello
-GitHub Projects
+- Trello
+- GitHub Projects
 
 ## Technical tools used for the project
 
-React 18
-Tailwind 3
-Netlify
-Adobe XD
+- React 18
+- Tailwind 3
+- Netlify
+- Adobe XD
 
 ### React dependencies
 
-react-calendar 4.2.1
-react-hook-form 7.43.9
-react-router-dom 6.11.0
+- react-calendar 4.2.1
+- react-hook-form 7.43.9
+- react-router-dom 6.11.0
 
 ## Getting started
 
